@@ -12,12 +12,15 @@ import './assets/styles/bootstrap.custom.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/"/*Parent*/ 
       element= {<App />} /*Takes an element of the app*/ >
-      <Route index ={true} path ="/" element={<HomeScreen />} />
+      <Route index ={true} path ="/" 
+        element={<HomeScreen />} /*Screen you will be taken to*/ />
+      <Route path ="/product/:id" element={<ProductScreen />} />
     </Route>
   )
 )
