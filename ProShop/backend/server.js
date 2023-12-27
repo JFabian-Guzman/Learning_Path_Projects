@@ -1,7 +1,9 @@
 import express from 'express';
 import products from './data/products.js'
+import dotenv from 'dotenv';
+dotenv.config();
 
-const port = 5000/*Local host*/;
+const port = process.env.PORT/*Port in file .env*/ || 5000;/*Local host*/
 // Initialize express
 const app = express();
 // First route
