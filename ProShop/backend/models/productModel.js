@@ -51,7 +51,7 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   description: {
-    type: Strign,
+    type: String,
     required: true,
   },
   reviews: [reviweSchema],
