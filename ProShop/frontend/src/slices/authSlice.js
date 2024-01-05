@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import { USERS_URL } from '../constants';
 
 const initialState = {
   // Check if there is user info
@@ -13,9 +14,13 @@ const authSlice = createSlice({
     setCredentials: (state, action) => {
       state.userInfo = action.payload;
       localStorage.setItem('userInfo', JSON.stringify(action.payload));
+    },
+    logout: (state, action) => {
+      state.userInfo = null;
+      localStorage.removeItem('userInfo');
     }
   }
 });
 
-export const { setCredentials } = authSlice.actions;
+export const { setCredentials, logout } = authSlice.actions;
 export default authSlice.reducer;
