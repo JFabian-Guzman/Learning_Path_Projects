@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { updateCart } from "../utils/cartUtils.js";
 
 const initialState = localStorage.getItem("cart") ? JSON.parse
-(localStorage.getItem("cart")) : {cartItems: []/*Initial state*/};
+(localStorage.getItem("cart")) : {cartItems: []/*Initial state*/
+  , shippingAddress: {}
+  , paymenMethod: 'PayPal'/*You can also integrate Stripe*/};
 
 
 
@@ -31,8 +33,12 @@ const cartSlice = createSlice({
         
         return updateCart(state);
     },
+    saveShippingAddress: (state, action) => {
+      state.shippingAddress = action.payload;
+      return updateCart(state);
+    }
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, saveShippingAddress } = cartSlice.actions;
 export default cartSlice.reducer;
