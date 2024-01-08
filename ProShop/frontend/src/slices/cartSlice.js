@@ -4,7 +4,7 @@ import { updateCart } from "../utils/cartUtils.js";
 const initialState = localStorage.getItem("cart") ? JSON.parse
 (localStorage.getItem("cart")) : {cartItems: []/*Initial state*/
   , shippingAddress: {}
-  , paymenMethod: 'PayPal'/*You can also integrate Stripe*/};
+  , paymentMethod: 'PayPal'/*You can also integrate Stripe*/};
 
 
 
@@ -38,9 +38,13 @@ const cartSlice = createSlice({
       return updateCart(state);
     },
     savePaymentMehod: (state, action) => {
-      state.paymenMethod = action.payload;
+      state.paymentMethod = action.payload;
       return updateCart(state);
-    }
+    },
+    clearCartItems: (state, action) => {
+      state.cartItems = [];
+      return updateCart(state);
+    },
   },
 });
 
