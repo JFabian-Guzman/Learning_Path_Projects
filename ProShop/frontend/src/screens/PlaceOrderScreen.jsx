@@ -36,7 +36,7 @@ const PlaceOrderScreen = () => {
         totalPrice: cart.totalPrice,
       }).unwrap();
       // If its a regular action from cartSlice, we need to dispatch it
-      dispatch(clearCartItems);
+      dispatch(clearCartItems());
       navigate(`/order/${res._id}`)
     } catch (error) {
       toast.error(error);  
