@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const reviweSchema = mongoose.Schema({
+const reviewSchema = mongoose.Schema({
   user: {
     // Every object added will have an _id
     // This is to identify who added the new product
@@ -54,7 +54,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  reviews: [reviweSchema],
+  reviews: [reviewSchema],
   rating: {
     type: Number,
     required: true,
