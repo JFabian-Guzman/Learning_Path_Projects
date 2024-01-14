@@ -1,6 +1,6 @@
 import { USERS_URL } from "../constants"
 import { apiSlice } from "./apiSlice"
-
+// Mutation = update & Query = Get data
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     /*We are making a POST request, so...it is a mutation*/
@@ -44,6 +44,20 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         url: `${USERS_URL}/${userId}`,
         method: 'DELETE',
       }),
+    }),
+    getUserDetails: builder.query({
+      query: (userId) => ({
+        url: `${USERS_URL}/${userId}`,
+      }),
+      keepUnusedDataFor: 5,
+    }),
+    updateUser: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/${data.userId}`,
+        method: 'PUT',
+        body: data,
+      }),
+      invalidatesTags: ['Users'],
     })
   }),
 });
@@ -55,4 +69,6 @@ export const {
   , useProfileMutation 
   , useGetUsersQuery
   , useDeleteUserMutation
+  , useGetUserDetailsQuery
+  , useUpdateUserMutation
 } = usersApiSlice;

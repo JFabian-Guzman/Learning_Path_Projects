@@ -45,7 +45,7 @@ const OrderListScreen = () => {
           { users.map( (user) => (
             <tr key={user._id}>
               <td>{user._id}</td>
-              <td>{user.user && user.user.name}</td>
+              <td>{user.name}</td>
               <td><a href={`mailto:${user.email}`}>{ user.email }</a></td>
               <td>
               { user.isAdmin ? (
@@ -56,7 +56,7 @@ const OrderListScreen = () => {
               ) }
               </td>
               <td>
-                <LinkContainer to={`admin/user/${user._id}/edit`}>
+                <LinkContainer to={`/admin/user/${user._id}/edit`}>
                   <Button variant='light' className='btn-sm'>
                     <FaEdit />
                   </Button>
