@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import { Link } from "react-router-dom";
-import { Form, Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap';
+import { Form, Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../components/Rating'
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -12,6 +12,7 @@ import Loader from '../components/Loader.jsx';
 import Message from '../components/Message.jsx';
 import { addToCart } from '../slices/cartSlice.js';
 import { toast } from 'react-toastify';
+import Meta from '../components/Meta.jsx';
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -58,6 +59,7 @@ const ProductScreen = () => {
       ): error ? <Message variant='danger'>{error?.data?.message || error.error}</Message> : 
       (
       <>
+      <Meta title={product.name} />
       <Row>
         <Col md={5}>
           <Image src={product.image} alt={product.name}
