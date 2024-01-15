@@ -59,7 +59,7 @@ const OrderScreen = () => {
     // Take a look at paypal documentation
     return actions.order.capture().then(async function (details) {
       try {
-        await payOrder({ orderId, details });
+        await payOrder({ orderId, details }).unwrap();
         // Change the title 'Not Paid' to 'Paid'
         refetch();
         toast.success('Payment successful');
