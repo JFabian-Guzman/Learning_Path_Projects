@@ -134,6 +134,7 @@ const getUsers = asyncHandler(async (req, res) => {
 //@route Get/api/users/:id
 //@access Private/Admin
 const getUsersByID = asyncHandler(async (req, res) => {
+  // .select(-password) take all user info minus password
   const user = await User.findById(req.params.id).select('-password');
 
   if(user) {
