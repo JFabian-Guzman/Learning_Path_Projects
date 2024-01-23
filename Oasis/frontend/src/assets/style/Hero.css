@@ -1,14 +1,61 @@
+@import url(./Root.css);
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
 body {
   overflow: hidden;
+  font-family: 'lora';
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.nav-link {
+  margin-right: 3rem;
+}
+
+.nav-link:hover {
+  border-bottom: .1rem solid white;
 }
 
 .bg-img {
   height: 100vh;
   width: 100vw;
   object-fit: cover;
-  filter: brightness(0.6);
+  filter: brightness(0.5);
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.hero-txt {
+  position: absolute;
+  top: 82vh;
+  margin-left: 7rem;
+  color: white;
+}
+
+.hero-txt button {
+  border: .1rem solid white;
+  background-color: transparent;
+  font-weight:500;
+  font-size: 1.25rem;
+  color: white;
+  border-radius: 20px;
+  width: 15rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  transition: ease-in-out 0.3s;
+}
+
+.hero-txt button:hover {
+  border-color: var(--clr-lightgreen);
+  color: var(--clr-lightgreen);
+  font-weight: 600;
+  width: 16rem;
 }
