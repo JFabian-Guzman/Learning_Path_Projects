@@ -21,14 +21,12 @@
 - **State:** Combination of every data we have in the application.
 - **trim():** Removes whitespaces.
 - **unwrap():** Removes the element's parent and returns the unwrapped content. Commonly used in promises.
-
-## Slices
 - **Reducer:** Takes state and action, then returns one entity - a new updated instance of the state.
 - **Builder:** Used to define and configure API endpoints in the context of creating an API slice using the Redux Toolkit's.
 - **builder.query:** Queries are used to fetch data from the server.
 - **builder.mutation:** Mutations typically involve making changes to the server, such as creating or updating data.
 - **keepUnusedDataFor:** Indicates how long the data should be kept in the Redux store, even if it is no longer being used.
-
+- **Payload:** Refers to the data that is transmitted as part of a request or response
 ## Hooks
 - **useState():** Lets a component "remember" information like user input.
 - **useSelector():** Allows you to extract data from the Redux store state for use in this component.

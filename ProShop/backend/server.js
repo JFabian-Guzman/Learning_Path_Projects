@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Cookie parser middleware
-app.use(cookieParser()); // This hel us acces jwt
+app.use(cookieParser()); // This help us acces jwt
 
 
 
