@@ -1,0 +1,28 @@
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-regular-svg-icons'
+
+const Header = () => {
+  return (
+    <>
+        <nav className="navbar navbar-expand-lg navbar-dark">
+          <div className="container">
+            <Link className="navbar-brand" to="/">Oasis</Link>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav ms-auto">
+                <Link className="nav-link"to="/">Comprar</Link>
+                <Link className="nav-link" to="/">Rentar</Link>
+                <Link className="nav-link" to="/">Vender</Link>
+                <Link className="nav-link" to="/login"><FontAwesomeIcon icon={faUser} /></Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+    </>
+  )
+}
+
+export default Header
