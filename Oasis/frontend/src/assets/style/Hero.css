@@ -63,10 +63,17 @@ body {
   width: 16rem;
 }
 /* End of Hero Section */
+/* Main Container*/
+.main-container {
+  display: flex;
+  flex-direction: column;
+  top: 91.2vh;
+  position: relative;
+}
+/* End of Main Container */
 /* Swiper Section */
 .container-sld {
   position:relative;
-  top: 91.2vh;
   width: 100vw;
   height: 70vh;
   display: flex;
@@ -88,9 +95,9 @@ body {
   width: 40%;
 }
 
-.new-section h1 {
-  font-weight: 500;
-  margin-left: 1rem;
+.new-section h2 {
+  font-weight: 800;
+  margin-left: 3rem;
 }
 
 .swiper {
@@ -114,5 +121,13 @@ body {
   border-radius: 10px;
 }
 /* End of Swiper Section */
-
+/* Services Section */
+.container-services {
+  width: 100vw;
+  height: 70vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+/* End of Services Section */
 

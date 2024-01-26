@@ -1,8 +1,18 @@
+// Style
 import '../assets/style/Hero.css'
-import Header from '../components/Header'
+// Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+// Components
+import Header from '../components/Header'
 import Slider from '../components/Slider'
+import ServiceCard from '../components/ServiceCard'
+// Images
+import house1 from '../assets/images/house_illustration.svg'
+import house2 from '../assets/images/house_illustration2.svg';
+import castle from '../assets/images/castle.jpg'
+// Bootstrap
+import { Row, Container } from 'react-bootstrap'
 
 const HomeScreen = () => {
   return (
@@ -16,12 +26,35 @@ const HomeScreen = () => {
         <FontAwesomeIcon icon={faUpRightFromSquare} />
         </button>
       </div>
-      <div className='container-sld'>
-        <div className='new-section'>
-          <h1>Comunidades</h1>
-          <div className="line"></div>
+      <div className="main-container">
+        <div className='container-sld'>
+          <div className='new-section'>
+            <h2>Comunidades</h2>
+            <div className="line"></div>
+          </div>
+          <Slider />
         </div>
-        <Slider />
+        <div className="container-services">
+          <Container>
+            <Row xs={1} md={2} lg={3} className="g-5">
+              <ServiceCard  
+                length ={3} 
+                img ={ castle }
+                txt_btn ='Buscar propiedades'
+                title ='Casas en venta'/>
+              <ServiceCard  
+                length ={3} 
+                img ={ house1 }
+                txt_btn ='Buscar alquileres'
+                title ='Casas para alquilar'/>
+              <ServiceCard  
+                length ={3} 
+                img ={ house2 }
+                txt_btn ='Listar una propiedad'
+                title ='Vender o Alquilar'/>
+            </Row>
+          </Container>
+        </div>
       </div>
     </>
   )
