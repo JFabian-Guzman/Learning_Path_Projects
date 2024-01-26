@@ -2,6 +2,7 @@ import '../assets/style/Hero.css'
 import Header from '../components/Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import Slider from '../components/Slider'
 
 const HomeScreen = () => {
   return (
@@ -14,6 +15,13 @@ const HomeScreen = () => {
         <button>Explorar
         <FontAwesomeIcon icon={faUpRightFromSquare} />
         </button>
+      </div>
+      <div className='container-sld'>
+        <div className='new-section'>
+          <h1>Comunidades</h1>
+          <div className="line"></div>
+        </div>
+        <Slider />
       </div>
     </>
   )

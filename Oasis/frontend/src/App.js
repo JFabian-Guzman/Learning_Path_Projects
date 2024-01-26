@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 const App = () => {
   return (
     <>
       <main>
-        <Outlet />
+        <Container fluid className="px-0">
+          <Outlet />
+        </Container>
       </main>
     </>
   )
