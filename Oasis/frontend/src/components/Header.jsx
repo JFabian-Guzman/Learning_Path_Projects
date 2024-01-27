@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
-import '../assets/style/Hero.css'
+import '../assets/style/HomeScreen.css'
 
 const Header = () => {
   return (
     <>
         <nav className="navbar navbar-expand-lg navbar-dark">
-          <div className="container">
-            <Link className="navbar-brand" to="/">Oasis</Link>
+          <div className="container-fluid mx-5">
+            <Link className="navbar-brand " to="/">Oasis</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>

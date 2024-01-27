@@ -6,10 +6,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
+// Images
+import beach from '../assets/images/beach_img.jpg';
+import forest from '../assets/images/forest_img.jpg';
 import city from '../assets/images/city_img.jpg';
-import forest from '../assets/images/beach_img.jpg';
-import beach from '../assets/images/forest_img.jpg';
-
+import village from '../assets/images/village_img.jpg';
+// Components
+import CardSlider from './CardSlider';
 
 const Slider = () => {
 
@@ -33,22 +36,16 @@ const Slider = () => {
         loop={true}
       >
         <SwiperSlide>
-          <img src={city} alt='city'/>
+          <CardSlider img={city} location='Villa Real'/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={forest} alt='forest'/>
+          <CardSlider img={forest} location='Bosques de Lindora'/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={beach} alt='beach'/>
+          <CardSlider img={beach} location='Santa Cruz'/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={city} alt='city'/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={forest} alt='forest'/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={beach} alt='beach'/>
+          <CardSlider img={village} location='San Rafael'/>
         </SwiperSlide>
 
         
