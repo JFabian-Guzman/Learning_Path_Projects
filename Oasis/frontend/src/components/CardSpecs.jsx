@@ -4,7 +4,7 @@ import beach from '../assets/images/beach_img.jpg';
 
 const CardSpecs = () => {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card>
       <Card.Img variant="top" src={beach} />
       <Card.Body>
         <Card.Title>Card Title</Card.Title>

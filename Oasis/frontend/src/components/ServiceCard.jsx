@@ -6,7 +6,7 @@ const ServiceCard = (data) => {
       <Card className='text-center'>
         <Card.Img variant="top" src={data.img} 
         style={{
-          width: '50%', margin: 'auto'}}/>
+          maxWidth: '60%', margin: 'auto'}}/>
         <Card.Body>
           <Card.Title>{data.title}</Card.Title>
           <Card.Text>
