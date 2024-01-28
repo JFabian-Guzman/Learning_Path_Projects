@@ -1,5 +1,4 @@
 @import url(./Root.css);
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
  /* Hero Section */
 .navbar-brand {
@@ -53,65 +52,12 @@
   width: 16rem;
 }
 /* End of Hero Section */
-/* Main Container*/
-.main-container {
-  display: flex;
-  flex-direction: column;
-  top: 91.2vh;
-  position: relative;
-}
-/* End of Main Container */
 /* Swiper Section */
-.container-sld {
-  position:relative;
-  width: 100vw;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--clr-honeydew);
-}
-
-.new-section {
-  position: absolute;
-  top: 1.5rem;
-  left: 0;
-  width: 100vw;
-  color: var(--clr-forestgreen);
-}
-
-.new-section .line {
-  border: 1px solid black;
-  width: 40%;
-}
-
-.new-section h2 {
-  font-weight: 800;
-  margin-left: 3rem;
-}
-
 .swiper {
   width: 90vw;
   height: 40vh;
-  top: 5vh;
   background-color: var(--clr-honeydew);
 }
-/*
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-*/
-/*
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 15px;
-}
-*/
 /* End of Swiper Section */
 /* Card Slider */
 .card-sld{
@@ -144,13 +90,3 @@
   border-radius: 20px;
 }
 /* End of Card Slider */
-/* Services Section */
-.container-services {
-  width: 100vw;
-  height: 70vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-/* End of Services Section */
-

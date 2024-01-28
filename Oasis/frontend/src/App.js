@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import './assets/style/HomeScreen.css'
 
 const App = () => {
   return (

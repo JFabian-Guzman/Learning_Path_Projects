@@ -22,13 +22,13 @@ const Slider = () => {
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={2}
+        slidesPerView={'2'}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
           depth: 100,
           modifier: 2.5,
-        slideShadows: true,
+          slideShadows: true,
         }}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
@@ -47,8 +47,6 @@ const Slider = () => {
         <SwiperSlide>
           <CardSlider img={village} location='San Rafael'/>
         </SwiperSlide>
-
-        
       </Swiper>
     </>
   );
