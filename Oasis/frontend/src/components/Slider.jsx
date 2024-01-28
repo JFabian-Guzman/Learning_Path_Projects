@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -22,7 +22,8 @@ const Slider = () => {
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={'2'}
+        slidesPerView={'1'}
+
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
@@ -30,8 +31,22 @@ const Slider = () => {
           modifier: 2.5,
           slideShadows: true,
         }}
+        breakpoints={{
+          720: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          992: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+        }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={true}
-        modules={[EffectCoverflow, Pagination]}
+        modules={[EffectCoverflow, Autoplay, Pagination]}
         className="mySwiper"
         loop={true}
       >

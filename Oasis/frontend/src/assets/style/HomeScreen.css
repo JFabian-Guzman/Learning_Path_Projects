@@ -98,5 +98,10 @@
   position: absolute;
   color: white;
 }
-
 /* End of Card Specs */
+
+@media (min-width: 1080) {
+  .last-listed-container {
+    min-height: 95vh !important; /* Adjust the value as needed */
+  }
+}

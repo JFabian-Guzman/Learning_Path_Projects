@@ -13,15 +13,15 @@ const Footer = () => {
       <Container>
         <Row>
           <Col className='text-center'>
-            <p>Oasis &copy; {currentYear}</p> {/* Displays the copyright year */}
-          </Col>
-          <Col className='text-center'>
             <p>Atencion al cliente</p>
             <Row>
               <Col>
                 <Link to='/'><FontAwesomeIcon className="p-2 fs-3" icon={faWhatsapp} /></Link> {/* Whatsapp icon with link */}
               </Col>
             </Row>
+          </Col>
+          <Col className='text-center'>
+            <p>Oasis &copy; {currentYear}</p> {/* Displays the copyright year */}
           </Col>
           <Col className='text-center'>
             <p>Siguenos en</p>

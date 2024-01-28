@@ -16,9 +16,14 @@ import castle from '../assets/images/castle.jpg'
 import { Row, Container, Col } from 'react-bootstrap'
 
 const HomeScreen = () => {
+  const handleClick = () => {
+    const services = document.getElementById('services')
+    services.scrollIntoView({ behavior: 'smooth' })
+  }
+
+
   return (
     <>
-      
       <Container fluid style={{
         minHeight: '100vh',
         minWidth: '100vw',
@@ -28,7 +33,7 @@ const HomeScreen = () => {
         alt="House" className='bg-img'/>
         <Container fluid  className=' mx-5 hero-txt'>
           <h2>PROVINCIA, CANTON</h2>
-          <button>Explorar
+          <button onClick={handleClick}>Servicios
           <FontAwesomeIcon icon={faUpRightFromSquare} />
           </button>
         </Container>
@@ -42,8 +47,9 @@ const HomeScreen = () => {
       {/*New Section*/}
       <p className='fs-2 fw-semibold ms-4'>Recien Listados</p>
       <Container fluid
-      className='d-flex flex-column align-items-between justify-content-center px-5'
-      style={{ minHeight: '120vh' }}>
+      className='d-flex flex-column align-items-between
+      justify-content-center px-5 last-listed-container'
+      style={{ minHeight: '70vh' }}>
         <Row xs={1} md={2} lg={3} className="g-5 mb-5">
           <Col>
             <CardSpecs />
@@ -71,7 +77,8 @@ const HomeScreen = () => {
       <p className='fs-2 fw-semibold ms-4 mt-5'>Servicios</p>
       <Container fluid
       className='d-flex align-items-center justify-content-center p-5'
-      style={{ minHeight: '55vh' }}>
+      style={{ minHeight: '55vh' }}
+      id='services'>
         <Row xs={1} md={2} lg={3} className="g-5">
           <ServiceCard
             img ={ castle }
