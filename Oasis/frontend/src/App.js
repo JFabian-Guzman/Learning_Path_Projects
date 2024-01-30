@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import Footer from "./components/Footer";
 import './assets/style/HomeScreen.css'
 
 const App = () => {
@@ -11,7 +10,6 @@ const App = () => {
           <Outlet />
         </Container>
       </main>
-      <Footer />
     </>
   )
 }

@@ -100,7 +100,7 @@
 }
 /* End of Card Specs */
 
-@media (min-width: 1080) {
+@media (min-width: 1400px) {
   .last-listed-container {
     min-height: 95vh !important; /* Adjust the value as needed */
   }

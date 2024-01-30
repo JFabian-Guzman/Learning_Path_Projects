@@ -1,0 +1,86 @@
+@import url(./Root.css);
+
+
+.login-wrap {
+  width: 85vw;
+  height: 85vh;
+  box-shadow: rgba(0, 0, 0, 0.65) 0px 22px 70px 4px;
+}
+.img-w {
+  width: 100%;
+  height: 0%;
+}
+
+.img-w img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.txt-w {
+  width: 100%;
+  height: 100%;
+}
+
+.txt-w span {
+  color: var(--clr-darkolivegreen);
+}
+
+.txt-w a {
+  text-decoration: none;
+}
+.custom-password {
+  height: fit-content;
+}
+
+.custom-password a{
+  position: relative;
+}
+
+.form-check {
+  width: fit-content;
+}
+
+#formBasicCheckbox {
+  box-shadow: none !important;
+}
+
+#formBasicCheckbox:checked {
+  background-color: var(--clr-lightgreen) !important;
+  border: none !important;
+}
+@media (min-width: 992px) {
+  .login-wrap {
+    flex-direction: row !important;
+  }
+
+  .img-w {
+    width: 50% !important;
+    height: 100% !important;
+  }
+  
+  .txt-w {
+    width: 50% !important;
+    height: 100% !important;
+  }
+
+  .form {
+    padding: 0 !important;
+  }
+
+}
+
+@media (min-width: 1300px) {
+  .form-group {
+    flex-direction: row !important;
+  }
+  .img-w {
+    width: 70% !important;
+    height: 100% !important;
+  }
+  
+  .txt-w {
+    width: 30% !important;
+    height: 100% !important;
+  }
+}

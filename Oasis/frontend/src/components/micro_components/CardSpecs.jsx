@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import house_sale from '../assets/images/house_sale_img.jpg';
+import house_sale from '../../assets/images/house_sale_img.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShower } from '@fortawesome/free-solid-svg-icons'
 import { faBed } from '@fortawesome/free-solid-svg-icons'
