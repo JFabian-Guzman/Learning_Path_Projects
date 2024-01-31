@@ -30,9 +30,10 @@ const FormLogin = () => {
         <Link to='/reset_password'><span>olvido su contraseña?</span></Link>
       </Form.Group>
       </Form.Group>
-      <Button variant="outline-success" className='w-100' type="submit">
-        Submit
+      <Button variant="outline-success" className='w-100 mb-2' type="submit">
+        Iniciar sesión
       </Button>
+      <p>No tienes una cuenta?<Link to='/register'><span>Registrate aquí</span></Link></p>
     </Form>
   )
 }
