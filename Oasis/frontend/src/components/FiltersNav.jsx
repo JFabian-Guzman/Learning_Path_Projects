@@ -5,11 +5,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import PriceInput from './micro_components/PriceInput';
+import { useNavigate } from 'react-router-dom';
 
 const FiltersNav = () => {
 
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate('/');
+  }
+
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-body-tertiary sticky-top">
       <Container>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -19,8 +26,8 @@ const FiltersNav = () => {
             navbarScroll
           >
             <NavDropdown title="Estado" id="navbarScrollingDropdown">
-              <Form.Check className='ms-2' type="checkbox" label="Venta" />
-              <Form.Check className='ms-2' type="checkbox" label="Renta" />
+              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Venta" />
+              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Renta" />
             </NavDropdown>
             <NavDropdown title="Precio" id="nav-price-dropdown">
               <PriceInput />
@@ -46,10 +53,10 @@ const FiltersNav = () => {
               <NavDropdown.Item>8</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Propiedad" id="navbarScrollingDropdown">
-              <Form.Check className='ms-2' type="checkbox" label="Casa" />
-              <Form.Check className='ms-2' type="checkbox" label="Apartamento" />
-              <Form.Check className='ms-2' type="checkbox" label="Condominio" />
-              <Form.Check className='ms-2' type="checkbox" label="Lote" />
+              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Casa" />
+              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Apartamento" />
+              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Condominio" />
+              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Lote" />
             </NavDropdown>
           </Nav>
           <Form className="d-flex">
@@ -62,6 +69,8 @@ const FiltersNav = () => {
             />
             <Button variant="outline-success">Search</Button>
           </Form>
+          <Button variant="outline-dark" className='ms-5'
+          onClick={goBack}>Ir a Inicio</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

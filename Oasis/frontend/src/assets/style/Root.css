@@ -18,3 +18,11 @@
 body {
   overflow-x: hidden;
 }
+
+.svg-inline--fa:not(.fa-user) {
+  color: var(--clr-darkolivegreen) !important;
+}
+
+.svg-inline--fa:hover:not(.fa-user) {
+  filter: brightness(1.2);
+}

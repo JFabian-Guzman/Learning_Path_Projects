@@ -11,7 +11,7 @@ const Services = () => {
       className='d-flex align-items-center justify-content-center p-5'
       style={{ minHeight: '55vh' }}
       id='services'>
-        <Row xs={1} md={2} lg={3} className="g-5">
+        <Row xs={1} md={2} lg={3} className="g-4">
           <ServiceCard
             img ={ castle }
             txt_btn ='Buscar propiedades'

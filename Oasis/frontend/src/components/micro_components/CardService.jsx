@@ -2,8 +2,8 @@ import { Button, Col, Card } from "react-bootstrap"
 
 const ServiceCard = (data) => {
   return (
-    <Col>
-      <Card className='text-center'>
+    <Col className="d-flex justify-content-center align-items-center">
+      <Card className='text-center' style={{maxWidth:'90%'}}>
         <Card.Img variant="top" src={data.img} 
         style={{
           maxWidth: '50%', margin: 'auto'}}/>

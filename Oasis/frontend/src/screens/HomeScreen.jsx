@@ -16,6 +16,7 @@ const HomeScreen = () => {
       <Slider />
       {/*New Section*/}
       <p className='fs-2 fw-semibold ms-4'>Recien Listados</p>
+      {/* TODO: Fetch data from DB */}
       <ProductsList />
       {/*New Section*/}
       <p className='fs-2 fw-semibold ms-4 mt-5'>Servicios</p>

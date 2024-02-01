@@ -9,7 +9,7 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 const CardSpecs = () => {
   return (
-    <Card>
+    <Card style={{ maxWidth: '90%'}}>
       <div className='price mt-2 ms-2 p-2'>
         ₡50,000,000
       </div>

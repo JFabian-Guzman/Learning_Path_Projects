@@ -93,10 +93,26 @@ input[type="range"]::-ms-slider-thumb {
   background: var(--clr-darkolivegreen);
 }
 
+.form-check-input {
+  box-shadow: none !important;
+  border: 1px solid #CCC !important;
+}
+
+.form-check-input:checked {
+  background-color: var(--clr-lightgreen) !important;
+  border: none !important;
+}
 
 @media (min-width: 768px) {
   .price-cnt {
-    width: 30vw !important;
+    width: 35vw !important;
+    height: 10vh !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .price-cnt {
+    width: 25vw !important;
     height: 10vh !important;
   }
 }
