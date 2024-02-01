@@ -2,8 +2,16 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const FormLogin = () => {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => { 
+    navigate('/')
+  }
+
   return (
     <Form className='w-100 h-100 form
     d-flex flex-column justify-content-center align-items-start'>
@@ -33,7 +41,12 @@ const FormLogin = () => {
       <Button variant="outline-success" className='w-100 mb-2' type="submit">
         Iniciar sesión
       </Button>
-      <p>No tienes una cuenta?<Link to='/register'><span>Registrate aquí</span></Link></p>
+      <p>No tienes una cuenta?
+        <Link to='/register'><span>Registrate aquí</span></Link>
+      </p>
+      <Button variant="secondary" className='mt-5 w-50' onClick={handleClick}>
+        Volver
+      </Button>
     </Form>
   )
 }

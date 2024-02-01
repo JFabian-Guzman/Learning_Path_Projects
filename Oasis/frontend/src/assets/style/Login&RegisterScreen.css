@@ -45,6 +45,7 @@
   box-shadow: none !important;
 }
 
+
 #formBasicCheckbox:checked {
   background-color: var(--clr-lightgreen) !important;
   border: none !important;

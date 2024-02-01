@@ -1,5 +1,5 @@
-import '../assets/style/LoginScreen.css'
-import { Container } from 'react-bootstrap'
+import '../assets/style/Login&RegisterScreen.css'
+import { Container} from 'react-bootstrap'
 import oasis from '../assets/images/oasis_img.jpg'
 import FormLogin from '../components/micro_components/FormLogin'
 
