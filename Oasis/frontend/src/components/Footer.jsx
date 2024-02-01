@@ -9,7 +9,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear(); /* Gets the current year */
 
   return (
-    <footer className="bg-light p-2"> {/* Footer container with light background and padding */}
+    <footer className="bg-light p-2 footer"> {/* Footer container with light background and padding */}
       <Container>
         <Row>
           <Col className='text-center'>

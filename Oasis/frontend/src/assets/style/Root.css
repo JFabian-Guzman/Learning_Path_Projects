@@ -19,10 +19,10 @@ body {
   overflow-x: hidden;
 }
 
-.svg-inline--fa:not(.fa-user) {
+.footer .svg-inline--fa {
   color: var(--clr-darkolivegreen) !important;
 }
 
-.svg-inline--fa:hover:not(.fa-user) {
+.footer .svg-inline--fa:hover {
   filter: brightness(1.2);
 }
