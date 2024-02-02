@@ -6,21 +6,33 @@ import Hero from '../components/Hero'
 import ProductsList from '../components/ProductsList'
 import Services from '../components/Services'
 import Footer from '../components/Footer'
+import { Container } from 'react-bootstrap'
 
 const HomeScreen = () => {
 
   return (
     <>
       <Hero />
-      <p className='fs-2 fw-semibold ms-4 mt-5'>Comunidades</p>
-      <Slider />
+      < Container fluid
+       style={{background:'var(--clr-honeydew)'}}>
+        <p className='fs-2 fw-semibold ms-4 pt-4'
+        style={{color: 'var(--clr-forestgreen)'}}>Comunidades</p>
+        <Slider/>
+      </Container>
       {/*New Section*/}
-      <p className='fs-2 fw-semibold ms-4'>Recien Listados</p>
-      {/* TODO: Fetch data from DB */}
-      <ProductsList />
+      < Container fluid>
+        <p className='fs-2 fw-semibold ms-4 py-4'
+        style={{color: 'var(--clr-forestgreen)'}}>Recien Listados</p>
+        {/* TODO: Fetch data from DB */}
+        <ProductsList />
+      </Container>
       {/*New Section*/}
-      <p className='fs-2 fw-semibold ms-4 mt-5'>Servicios</p>
-      <Services />
+      < Container fluid
+       style={{background:'var(--clr-honeydew)'}}>
+        <p className='fs-2 fw-semibold ms-4 pt-4'
+        style={{color: 'var(--clr-forestgreen)'}}>Servicios</p>
+        <Services />
+      </Container>
       <Footer />
     </>
   )

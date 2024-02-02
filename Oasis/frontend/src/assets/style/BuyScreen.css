@@ -103,6 +103,16 @@ input[type="range"]::-ms-slider-thumb {
   border: none !important;
 }
 
+#navbarScrollingDropdown {
+  border-radius: 10px;
+  border: 1px solid var(--clr-darkolivegreen) !important;
+  transition: .3s ease-in-out;
+}
+
+#navbarScrollingDropdown:hover {
+  background-color: var(--clr-mintGreen);
+}
+
 @media (min-width: 768px) {
   .price-cnt {
     width: 35vw !important;

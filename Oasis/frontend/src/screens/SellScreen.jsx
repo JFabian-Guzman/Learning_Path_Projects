@@ -11,13 +11,16 @@ const SellScreen = () => {
 
   return (
     <>
-      <Container className="d-flex 
-      justify-content-between
-      align-items-center mb-5">
-        <h1>Listar Propiedad</h1>
-        <Button variant="outline-dark" className='ms-5'
-        onClick={goBack}>Ir a Inicio</Button>
-      </Container>
+        <Container className="d-flex 
+        justify-content-between
+        align-items-center"
+        fluid
+        style={{color:'var(--clr-lightgreen)',
+        background:'var(--clr-forestgreen)'}}>
+          <h1>Listar Propiedad</h1>
+          <Button variant="outline-light" className='ms-5'
+          onClick={goBack}>Ir a Inicio</Button>
+        </Container>
       <FormSell />
       <Footer />
     </>

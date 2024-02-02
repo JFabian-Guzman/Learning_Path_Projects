@@ -5,9 +5,11 @@ import Container from 'react-bootstrap/Container';
 const FormSell = () => {
   return (
     <Form className='w-100 h-100 form
-    d-flex flex-column justify-content-center align-items-center'>
+    d-flex flex-column justify-content-center
+    align-items-center'
+    style={{background: 'var(--clr-honeydew)'}}>
       {/* Location */}
-      <Form.Group className="mb-3 w-50">
+      <Form.Group className="mb-3 mt-5 w-50">
         <Form.Label>Ubicacion</Form.Label>
         <Form.Control type="text" placeholder="ubicacion" />
       </Form.Group>
@@ -59,7 +61,7 @@ const FormSell = () => {
         label="Rentar" className='ms-3' />
       </Form.Group>
       
-      <Button variant="outline-success mb-5" className='w-50' type="submit">
+      <Button variant="outline-dark mb-5" className='w-50' type="submit">
         Listar propiedad
       </Button>
     </Form>

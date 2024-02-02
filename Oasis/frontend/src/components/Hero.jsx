@@ -12,7 +12,7 @@ const Hero = () => {
   }
 
   return (
-    <Container fluid style={{
+    <Container fluid className='p-0 position-relative t-0' style={{
       minHeight: '100vh',
       minWidth: '100vw',
     }}>

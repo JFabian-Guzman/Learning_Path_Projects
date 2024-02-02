@@ -16,7 +16,9 @@ const FiltersNav = () => {
   }
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary sticky-top">
+    <Navbar expand="lg" className="sticky-top" 
+    style={{background:'white',
+    borderBottom:'1px solid black'}}>
       <Container>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -29,7 +31,7 @@ const FiltersNav = () => {
               <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Venta" />
               <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Renta" />
             </NavDropdown>
-            <NavDropdown title="Precio" id="nav-price-dropdown">
+            <NavDropdown title="Precio" id="navbarScrollingDropdown">
               <PriceInput />
             </NavDropdown>
             <NavDropdown title="Habitaciones" id="navbarScrollingDropdown">
