@@ -14,9 +14,9 @@ const FormRegister = () => {
   return (
     <Form className='w-100 h-100 form
     d-flex flex-column justify-content-center align-items-start'>
-      <Form.Group className="w-100" controlId="formBasicEmail">
+      <Form.Group className="w-100" controlId="formBasicUserName">
         <FloatingLabel
-          controlId="floatingInput"
+          controlId="userNameFloatingInput"
           label="Nombre de usuario"
           className="mb-3"
         >
@@ -26,7 +26,7 @@ const FormRegister = () => {
 
       <Form.Group className="w-100" controlId="formBasicEmail">
         <FloatingLabel
-          controlId="floatingInput"
+          controlId="emailFloatingInput"
           label="Email"
           className="mb-3"
         >
@@ -34,9 +34,9 @@ const FormRegister = () => {
         </FloatingLabel>
       </Form.Group>
 
-      <Form.Group className="w-100" controlId="formBasicEmail">
+      <Form.Group className="w-100" controlId="phone">
         <FloatingLabel
-          controlId="floatingInput"
+          controlId="phoneFloatingInput"
           label="Celular"
           className="mb-3"
         >
@@ -48,7 +48,7 @@ const FormRegister = () => {
         <FloatingLabel controlId="floatingPassword" label="Contraseña" className='mb-3'>
           <Form.Control type="password" placeholder="Contraseña" className='shadow-none' />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingPassword" label="Confirmar contraseña" className='mb-3'>
+        <FloatingLabel controlId="floatingConfirmPassword" label="Confirmar contraseña" className='mb-3'>
           <Form.Control type="password" placeholder="Confirmar contraseña" className='shadow-none' />
         </FloatingLabel>
         {/* TODO: When the user make a mistake in the password, the following message will be shown */}

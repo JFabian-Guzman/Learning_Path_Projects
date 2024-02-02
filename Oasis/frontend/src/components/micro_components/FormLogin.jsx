@@ -17,7 +17,7 @@ const FormLogin = () => {
     d-flex flex-column justify-content-center align-items-start'>
       <Form.Group className="mb-5 w-100" controlId="formBasicEmail">
         <FloatingLabel
-          controlId="floatingInput"
+          controlId="emailFloatingInput"
           label="Email"
           className="mb-3"
         >

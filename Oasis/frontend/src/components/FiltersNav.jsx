@@ -28,8 +28,8 @@ const FiltersNav = () => {
             navbarScroll
           >
             <NavDropdown title="Estado" id="navbarScrollingDropdown">
-              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Venta" />
-              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Renta" />
+              <Form.Check className='ms-2 flt-checkbox' id='saleCheckBox' type="checkbox" label="Venta" />
+              <Form.Check className='ms-2 flt-checkbox' id='rentCheckBox'type="checkbox" label="Renta" />
             </NavDropdown>
             <NavDropdown title="Precio" id="navbarScrollingDropdown">
               <PriceInput />
@@ -55,10 +55,10 @@ const FiltersNav = () => {
               <NavDropdown.Item>8</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Propiedad" id="navbarScrollingDropdown">
-              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Casa" />
-              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Apartamento" />
-              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Condominio" />
-              <Form.Check className='ms-2 flt-checkbox' type="checkbox" label="Lote" />
+              <Form.Check className='ms-2 flt-checkbox' id='houseCheckBox' type="checkbox" label="Casa" />
+              <Form.Check className='ms-2 flt-checkbox' id='apartmentCheckBox' type="checkbox" label="Apartamento" />
+              <Form.Check className='ms-2 flt-checkbox' id='condoCheckBox' type="checkbox" label="Condominio" />
+              <Form.Check className='ms-2 flt-checkbox' id='landCheckBox' type="checkbox" label="Lote" />
             </NavDropdown>
           </Nav>
           <Form className="d-flex">
