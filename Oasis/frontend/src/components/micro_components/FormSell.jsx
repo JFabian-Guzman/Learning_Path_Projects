@@ -11,8 +11,13 @@ const FormSell = () => {
     style={{background: 'var(--clr-honeydew)'}}>
       {/* Location */}
       <Form.Group className="mb-3 mt-5 w-50">
-        <FloatingLabel controlId="locationFloatingInput" label="Ubicación" className="mb-3">
-          <Form.Control type="text" placeholder="Ubicación" />
+        <FloatingLabel controlId="cityFloatingInput" label="Provincia" className="mb-3">
+          <Form.Control type="text" placeholder="Provincia" />
+        </FloatingLabel>
+      </Form.Group>
+      <Form.Group className="mb-3 w-50">
+        <FloatingLabel controlId="countyFloatingInput" label="Cantón" className="mb-3">
+          <Form.Control type="text" placeholder="Cantón" />
         </FloatingLabel>
       </Form.Group>
       {/* Description */}

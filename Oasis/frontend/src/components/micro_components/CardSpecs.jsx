@@ -7,19 +7,19 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const CardSpecs = () => {
+const CardSpecs = ( {home} ) => {
   return (
     <Card style={{ maxWidth: '90%'}}>
       <div className='price mt-2 ms-2 p-2'>
-        ₡50,000,000
+        {home.price}
       </div>
       <Card.Img variant="top" src={house_sale} />
       <Card.Body>
-        <Card.Title>Ciudad, Provincia</Card.Title>
+        <Card.Title>{home.city}</Card.Title>
         <Card.Text>
-          <FontAwesomeIcon className='ms-1 me-2'icon={faShower} /> 2 
-          <FontAwesomeIcon className='ms-4 me-2' icon={faBed} /> 4
-          <FontAwesomeIcon className='ms-4 me-2' icon={faHouse} /> 192m²
+          <FontAwesomeIcon className='ms-1 me-2'icon={faShower} /> {home.bathrooms} 
+          <FontAwesomeIcon className='ms-4 me-2' icon={faBed} /> {home.bedrooms}
+          <FontAwesomeIcon className='ms-4 me-2' icon={faHouse} /> {home.area} m²
         </Card.Text>
       </Card.Body>
     </Card>
