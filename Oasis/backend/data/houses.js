@@ -1,6 +1,5 @@
 const houses = [
   {
-    _id: '1',
     city: 'Guanacaste',
     county: 'Santa Cruz',
     description:
@@ -14,7 +13,6 @@ const houses = [
     forRent: false,
   },
   {
-    _id: '2',
     city: 'San José',
     county: 'Escazu',
     description:
@@ -28,7 +26,6 @@ const houses = [
     forRent: false,
   },
   {
-    _id: '3',
     city: 'Cartago',
     county: 'El Carmen',
     description:
@@ -42,7 +39,6 @@ const houses = [
     forRent: true,
   },
   {
-    _id: '4',
     city: 'Heredia',
     county: 'Barva',
     description:
@@ -56,7 +52,6 @@ const houses = [
     forRent: true,
   },
   {
-    _id: '5',
     city: 'Cartago',
     county: 'San Rafael',
     description:
@@ -70,7 +65,6 @@ const houses = [
     forRent: false,
   },
   {
-    _id: '6',
     city: 'Limon',
     county: 'Pococi',
     description:
