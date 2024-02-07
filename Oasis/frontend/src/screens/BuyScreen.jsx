@@ -1,6 +1,5 @@
 import FiltersNav from "../components/FiltersNav"
 import ProductsList from "../components/ProductsList"
-import Footer from "../components/Footer"
 import '../assets/style/BuyScreen.css'
 
 const BuyScreen = () => {
@@ -11,7 +10,6 @@ const BuyScreen = () => {
       {/* TODO: Fetch data from DB */}
       <ProductsList />
       <ProductsList />
-      <Footer />
     </>
   )
 }

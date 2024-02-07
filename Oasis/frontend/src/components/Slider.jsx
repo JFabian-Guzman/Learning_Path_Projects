@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -21,28 +21,19 @@ const Slider = () => {
   return (
     <>
     <Container fluid
-      className='d-flex flex-column justify-content-center align-items-center' 
-      style={{minHeight:'50vh'}}>
+      className='d-flex flex-column justify-content-center align-items-center pb-5 pt-2' >
       <Swiper
-          effect={'coverflow'}
           grabCursor={true}
           centeredSlides={true}
           slidesPerView={'1'}
 
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2.5,
-            slideShadows: true,
-          }}
           breakpoints={{
             720: {
               slidesPerView: 1,
               spaceBetween: 20,
             },
             992: {
-              slidesPerView: 2,
+              slidesPerView: 3,
               spaceBetween: 20,
             },
           }}
@@ -51,8 +42,7 @@ const Slider = () => {
             disableOnInteraction: false,
           }}
           pagination={true}
-          modules={[EffectCoverflow, Autoplay, Pagination]}
-          className="mySwiper"
+          modules={[Autoplay, Pagination]}
           loop={true}
         >
           <SwiperSlide>

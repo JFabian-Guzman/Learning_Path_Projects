@@ -5,24 +5,11 @@ import Footer from "../components/Footer"
 
 const SellScreen = () => {
   const navigate = useNavigate();
-  const goBack = () => {
-    navigate('/');
-  }
 
   return (
     <>
-        <Container className="d-flex 
-        justify-content-between
-        align-items-center"
-        fluid
-        style={{color:'var(--clr-lightgreen)',
-        background:'var(--clr-forestgreen)'}}>
-          <h1>Listar Propiedad</h1>
-          <Button variant="outline-light" className='ms-5'
-          onClick={goBack}>Ir a Inicio</Button>
-        </Container>
+      <h1 style={{color:'var(--clr-forestgreen)'}} className="m-3">Listar Propiedad</h1>
       <FormSell />
-      <Footer />
     </>
   )
 }

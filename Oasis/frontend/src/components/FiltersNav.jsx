@@ -5,26 +5,19 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import PriceInput from './micro_components/PriceInput';
-import { useNavigate } from 'react-router-dom';
 
 const FiltersNav = () => {
 
-  const navigate = useNavigate();
-
-  const goBack = () => {
-    navigate('/');
-  }
-
   return (
-    <Navbar expand="lg" className="sticky-top" 
-    style={{background:'white',
-    borderBottom:'1px solid black'}}>
-      <Container>
+    <Navbar expand='lg' bg="light" data-bs-theme="light" className='px-5'
+    style={{
+    borderBottom:'1px solid black'
+    }}>
+      <Container fluid>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
             navbarScroll
           >
             <NavDropdown title="Estado" id="navbarScrollingDropdown">
@@ -71,8 +64,6 @@ const FiltersNav = () => {
             />
             <Button variant="outline-success">Search</Button>
           </Form>
-          <Button variant="outline-dark" className='ms-5'
-          onClick={goBack}>Ir a Inicio</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

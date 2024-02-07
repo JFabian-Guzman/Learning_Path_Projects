@@ -7,8 +7,7 @@ const FormSell = () => {
   return (
     <Form className='w-100 h-100 form
     d-flex flex-column justify-content-center
-    align-items-center'
-    style={{background: 'var(--clr-honeydew)'}}>
+    align-items-center'>
       {/* Location */}
       <Form.Group className="mb-3 mt-5 w-50">
         <FloatingLabel controlId="cityFloatingInput" label="Provincia" className="mb-3">

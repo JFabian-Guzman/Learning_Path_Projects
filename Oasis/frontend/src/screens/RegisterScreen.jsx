@@ -5,8 +5,7 @@ import oasis from '../assets/images/oasis2_img.jpg'
 
 const RegisterScreen = () => {
   return (
-    <Container className='d-flex justify-content-center align-items-center'
-      style={{minHeight: '100vh', minWidth: '100vw'}}>
+    <Container fluid className='d-flex justify-content-center align-items-center pb-5 pt-4'>
       <div className='login-wrap d-flex flex-column flex-column-reverse'>
         <div className='txt-w p-4 d-flex flex-column justify-content-start align-items-center'>
           <h1>Bienvenido<br/> a <span>Oasis</span>!</h1>

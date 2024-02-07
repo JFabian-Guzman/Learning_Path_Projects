@@ -62,9 +62,6 @@ const FormRegister = () => {
       <p>Ya tienes una cuenta?
         <Link to='/login'><span>Inicia sesion aquí</span></Link>
       </p>
-      <Button variant="secondary" className='mt-5 w-50' onClick={handleClick}>
-        Volver
-      </Button>
     </Form>
   )
 }

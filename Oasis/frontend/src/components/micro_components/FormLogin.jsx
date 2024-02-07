@@ -44,9 +44,6 @@ const FormLogin = () => {
       <p>No tienes una cuenta?
         <Link to='/register'><span>Registrate aquí</span></Link>
       </p>
-      <Button variant="secondary" className='mt-5 w-50' onClick={handleClick}>
-        Volver
-      </Button>
     </Form>
   )
 }

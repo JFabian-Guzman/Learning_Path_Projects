@@ -9,7 +9,6 @@ const Services = () => {
   return (
     <Container fluid
       className='d-flex align-items-center justify-content-center p-5'
-      style={{ minHeight: '55vh' }}
       id='services'>
         <Row xs={1} md={2} lg={3} className="g-4">
           <ServiceCard

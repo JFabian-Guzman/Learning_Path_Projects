@@ -20,7 +20,9 @@ const router = createBrowserRouter(
       <Route index ={true} path="/" element={<HomeScreen />} />
       <Route path="/login" element={<LogInScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
-      <Route path="/buy" element={<BuyScreen />} />
+      <Route path="/catalog/buy" element={<BuyScreen />} />
+      {/* TODO: Change whats needed to make a rent screen */}
+      <Route path="/catalog/rent" element={<BuyScreen />} />
       <Route path="/sell" element={<SellScreen />} />
     </Route>
   )

@@ -1,4 +1,8 @@
 import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import '../assets/style/HomeScreen.css'
@@ -6,23 +10,29 @@ import '../assets/style/HomeScreen.css'
 const Header = () => {
   return (
     <>
-        <nav className="navbar navbar-expand-lg navbar-dark">
-          <div className="container-fluid mx-5">
-            <Link className="navbar-brand " to="/">Oasis</Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav ms-auto">
-                <Link className="nav-link"to="/buy">Comprar</Link>
-                {/* Set rent checkbox active*/}
-                <Link className="nav-link" to="/buy">Rentar</Link>
-                <Link className="nav-link" to="/sell">Vender</Link>
-                <Link className="nav-link" to="/login"><FontAwesomeIcon icon={faUser} /></Link>
-              </div>
-            </div>
-          </div>
-        </nav>
+      <Navbar expand='lg' sticky='top' bg="light" data-bs-theme="light"
+      >
+        <Container fluid >
+          <LinkContainer to="/" style={{ color: 'var(--clr-darkolivegreen)'}}>
+            <Navbar.Brand  className='ms-5 fs-2'>Oasis</Navbar.Brand>
+          </LinkContainer>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+            <Nav>
+              <LinkContainer to="/catalog/buy">
+                <Nav.Link>Comprar</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/catalog/rent">
+                <Nav.Link>Rentar</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/sell">
+                <Nav.Link>Vender</Nav.Link>
+              </LinkContainer>
+              <Link className="nav-link" to="/login"><FontAwesomeIcon icon={faUser} /></Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   )
 }

@@ -13,12 +13,6 @@ const HomeScreen = () => {
   return (
     <>
       <Hero />
-      < Container fluid
-        style={{background:'var(--clr-honeydew)'}}>
-        <p className='fs-2 fw-semibold ms-4 pt-4'
-        style={{color: 'var(--clr-forestgreen)'}}>Comunidades</p>
-        <Slider/>
-      </Container>
       {/*New Section*/}
       < Container fluid>
         <p className='fs-2 fw-semibold ms-4 py-4'
@@ -28,12 +22,17 @@ const HomeScreen = () => {
       </Container>
       {/*New Section*/}
       < Container fluid
-        style={{background:'var(--clr-honeydew)'}}>
+        style={{background:'var(--clr-pale_sage)'}}>
         <p className='fs-2 fw-semibold ms-4 pt-4'
         style={{color: 'var(--clr-forestgreen)'}}>Servicios</p>
         <Services />
       </Container>
-      <Footer />
+      {/*New Section*/}
+      < Container fluid>
+        <p className='fs-2 fw-semibold ms-4 pt-4'
+        style={{color: 'var(--clr-forestgreen)'}}>Comunidades</p>
+        <Slider/>
+      </Container>
     </>
   )
 }
