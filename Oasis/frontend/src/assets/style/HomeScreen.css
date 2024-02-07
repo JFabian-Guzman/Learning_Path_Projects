@@ -118,3 +118,14 @@
   position: absolute;
   color: white;
 }
+.specs-container{
+  width: 90%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.specs-container:hover{
+  transform: scale(1.03);
+}
+/* End of Card Specs */

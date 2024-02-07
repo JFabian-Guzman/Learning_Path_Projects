@@ -3,7 +3,7 @@ import '../assets/style/HomeScreen.css'
 // Components
 import Slider from '../components/Slider'
 import Hero from '../components/Hero'
-import ProductsList from '../components/ProductsList'
+import LastProducts from '../components/LastProducts'
 import Services from '../components/Services'
 import { Container } from 'react-bootstrap'
 
@@ -16,7 +16,7 @@ const HomeScreen = () => {
       < Container fluid
       style={{ background: '#ffff', padding: '20px' }}
       >
-        <ProductsList />
+        <LastProducts />
       </Container>
       {/*New Section*/}
       < Container fluid
