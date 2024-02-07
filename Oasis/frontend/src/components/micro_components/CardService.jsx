@@ -3,18 +3,16 @@ import { Button, Col, Card } from "react-bootstrap"
 const ServiceCard = (data) => {
   return (
     <Col className="d-flex justify-content-center align-items-center">
-      <Card className='text-center' style={{maxWidth:'90%'}}>
-        <Card.Img variant="top" src={data.img} 
-        style={{
-          maxWidth: '50%', margin: 'auto'}}/>
-        <Card.Body>
+      <Card className="text-center service-card" style={{width:'80%', minHeight: '65vh', display: 'grid', alignItems:'center'}}>
+        <Card.Img className="w-75 m-auto" variant="top" src={data.img} />
+        <Card.Body className="d-flex flex-column jusitify-content-center align-items-center">
           <Card.Title>{data.title}</Card.Title>
-          <Card.Text>
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit
-            longer.
+          <Card.Text className="w-75">
+            {data.description}
           </Card.Text>
-          <Button variant="primary">{data.txt_btn}</Button> 
+          <Button className="service-button">
+              {data.txt_btn}
+          </Button> 
         </Card.Body>
       </Card>
     </Col>

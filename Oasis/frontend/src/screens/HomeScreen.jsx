@@ -5,7 +5,6 @@ import Slider from '../components/Slider'
 import Hero from '../components/Hero'
 import ProductsList from '../components/ProductsList'
 import Services from '../components/Services'
-import Footer from '../components/Footer'
 import { Container } from 'react-bootstrap'
 
 const HomeScreen = () => {
@@ -14,23 +13,20 @@ const HomeScreen = () => {
     <>
       <Hero />
       {/*New Section*/}
-      < Container fluid>
-        <p className='fs-2 fw-semibold ms-4 py-4'
-        style={{color: 'var(--clr-forestgreen)'}}>Recien Listados</p>
-        {/* TODO: Fetch data from DB */}
+      < Container fluid
+      style={{ background: '#ffff', padding: '20px' }}
+      >
         <ProductsList />
       </Container>
       {/*New Section*/}
       < Container fluid
-        style={{background:'var(--clr-pale_sage)'}}>
-        <p className='fs-2 fw-semibold ms-4 pt-4'
-        style={{color: 'var(--clr-forestgreen)'}}>Servicios</p>
+        style={{ background: '#f5f5f5', padding: '20px' }}
+        >
         <Services />
       </Container>
       {/*New Section*/}
-      < Container fluid>
-        <p className='fs-2 fw-semibold ms-4 pt-4'
-        style={{color: 'var(--clr-forestgreen)'}}>Comunidades</p>
+      < Container fluid className='p-5'
+      style={{ background: '#ffff', padding: '20px' }}>
         <Slider/>
       </Container>
     </>

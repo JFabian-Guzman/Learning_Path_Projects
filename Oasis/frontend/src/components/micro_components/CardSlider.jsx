@@ -6,7 +6,7 @@ const CardSlider = ( data ) => {
     <div className="card-sld">
       <img src={data.img} alt="city" />
       <div className='txt-sld'>
-        <p className='my-0'>
+        <p className='m-auto'>
           <FontAwesomeIcon className='mx-3' icon={faLocationDot} />
           {data.location}
         </p>
