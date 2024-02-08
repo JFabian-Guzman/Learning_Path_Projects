@@ -8,7 +8,8 @@ const houses = [
     area: 200,
     bathrooms: 2,
     bedrooms: 4,
-    image: '/images/house_sale.jpg',
+    image: ['/images/houses/house_3.jpg','/images/gardens/garden_2.jpg', '/images/kitchens/kitchen_1.jpg'
+    , '/images/living_rooms/living_room_2.jpg'],
     inSale: true,
     forRent: false,
   },
@@ -21,7 +22,8 @@ const houses = [
     area: 300,
     bathrooms: 3,
     bedrooms: 4,
-    image: '/images/house_sale.jpg',
+    image: ['/images/houses/house_2.jpg','/images/gardens/garden_3.jpg', '/images/kitchens/kitchen_2.jpg'
+    , '/images/living_rooms/living_room_1.jpg'],
     inSale: true,
     forRent: false,
   },
@@ -34,7 +36,8 @@ const houses = [
     area: 200,
     bathrooms: 2,
     bedrooms: 4,
-    image: '/images/house_sale.jpg',
+    image: ['/images/houses/house_1.jpg','/images/gardens/garden_1.jpg', '/images/kitchens/kitchen_1.jpg'
+    , '/images/living_rooms/living_room_3.jpg'],
     inSale: false,
     forRent: true,
   },
@@ -47,7 +50,8 @@ const houses = [
     area: 400,
     bathrooms: 4,
     bedrooms: 6,
-    image: '/images/house_sale.jpg',
+    image: ['/images/houses/house_2.jpg','/images/gardens/garden_2.jpg', '/images/kitchens/kitchen_3.jpg'
+    , '/images/living_rooms/living_room_1.jpg'],
     inSale: false,
     forRent: true,
   },
@@ -60,7 +64,8 @@ const houses = [
     area: 150,
     bathrooms: 1,
     bedrooms: 2,
-    image: '/images/house_sale.jpg',
+    image: ['/images/houses/house_2.jpg','/images/gardens/garden_2.jpg', '/images/kitchens/kitchen_2.jpg'
+    , '/images/living_rooms/living_room_2.jpg'],
     inSale: true,
     forRent: false,
   },
@@ -73,7 +78,8 @@ const houses = [
     area: 1200,
     bathrooms: 4,
     bedrooms: 8,
-    image: '/images/house_sale.jpg',
+    image: ['/images/houses/house_3.jpg','/images/gardens/garden_3.jpg', '/images/kitchens/kitchen_3.jpg'
+    , '/images/living_rooms/living_room_3.jpg'],
     inSale: true,
     forRent: false,
   },

@@ -1,5 +1,4 @@
 import Card from 'react-bootstrap/Card';
-import house_sale from '../../assets/images/house_sale_img.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShower } from '@fortawesome/free-solid-svg-icons'
 import { faBed } from '@fortawesome/free-solid-svg-icons'
@@ -15,7 +14,7 @@ const CardSpecs = ( {home} ) => {
             <div className='price mt-2 ms-2 p-2'>
               {home.price}
             </div>
-            <Card.Img variant="top" src={house_sale} />
+            <Card.Img variant="top" src={home.image[0]} />
             <Card.Body>
               <Card.Title>{home.city}</Card.Title>
               <Card.Text>
