@@ -77,6 +77,20 @@ const houses = [
     inSale: true,
     forRent: false,
   },
+  {
+    city: 'Puntares',
+    county: 'Pococi',
+    description:
+      'Contiene varias imagenes',
+    price: '$350000',
+    area: 1200,
+    bathrooms: 4,
+    bedrooms: 8,
+    image: ['/images/houses/house_1.jpg','/images/gardens/garden_1.jpg', '/images/kitchens/kitchen_1.jpg'
+    , '/images/living_rooms/living_room_1.jpg'],
+    inSale: true,
+    forRent: false,
+  },
 ]
 
 export default houses

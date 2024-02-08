@@ -1,14 +1,22 @@
 .images-container {
-  min-width: 100vw;
-  min-height: 40vh;
+  width: 100vw;
+  height: 70vh;
+  background-color: black;
 }
 
 .image-projector {
   background-color: red;
-  width: 100%;
-  height: 100%;
 }
 
 .image-index{
   background: blue;
+  overflow: auto;
+}
+
+.images {
+  background-color: yellow;
+}
+
+.house-image {
+  cursor: pointer;
 }

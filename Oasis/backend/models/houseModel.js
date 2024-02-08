@@ -13,7 +13,7 @@ const houseSchema = mongoose.Schema({
   area: { type: String, required: true },
   bathrooms: { type: Number, required: true },
   bedrooms: { type: Number, required: true },
-  image: { type: String, required: true },
+  image: { type: Array, required: true },
   inSale: { type: Boolean, required: true },
   forRent: { type: Boolean, required: true },
 }, {
