@@ -13,6 +13,7 @@ import LogInScreen from './screens/LogInScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import BuyScreen from './screens/BuyScreen';
 import SellScreen from './screens/SellScreen';
+import HouseIDScreen from './screens/HouseScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       {/* TODO: Change whats needed to make a rent screen */}
       <Route path="/catalog/rent" element={<BuyScreen />} />
       <Route path="/sell" element={<SellScreen />} />
+      <Route path="/catalog/:id" element={<HouseIDScreen />} />
     </Route>
   )
 );

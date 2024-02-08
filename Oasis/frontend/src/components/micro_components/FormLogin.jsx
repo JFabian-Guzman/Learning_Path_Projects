@@ -2,15 +2,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 const FormLogin = () => {
-
-  const navigate = useNavigate();
-
-  const handleClick = () => { 
-    navigate('/')
-  }
 
   return (
     <Form className='w-100 h-100 form

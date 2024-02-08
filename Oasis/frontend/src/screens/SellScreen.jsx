@@ -1,10 +1,6 @@
 import FormSell from "../components/micro_components/FormSell"
-import { Button, Container } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
-import Footer from "../components/Footer"
 
 const SellScreen = () => {
-  const navigate = useNavigate();
 
   return (
     <>

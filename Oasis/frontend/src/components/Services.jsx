@@ -1,9 +1,9 @@
 import { Container, Row } from 'react-bootstrap'
 import ServiceCard from './micro_components/CardService'
 // Images
-import service_1 from '../assets/images/service_1.svg'
-import service_2 from '../assets/images/service_2.svg';
-import service_3 from '../assets/images/service_3.svg'
+import service_1 from '../assets/images/services_img/service_1.svg'
+import service_2 from '../assets/images/services_img/service_2.svg';
+import service_3 from '../assets/images/services_img/service_3.svg'
 
 const Services = () => {
   return (
