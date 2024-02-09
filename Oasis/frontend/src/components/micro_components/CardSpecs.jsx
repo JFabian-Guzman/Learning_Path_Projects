@@ -9,14 +9,17 @@ import { LinkContainer } from 'react-router-bootstrap'
 const CardSpecs = ( {home} ) => {
   return (
     <>
-      <LinkContainer className='specs-container' to={`/catalog/${home._id}`}>
+      <LinkContainer  className='specs-container' to={`/catalog/${home._id}`}>
         <Card>
             <div className='price mt-2 ms-2 p-2'>
               {home.price}
             </div>
-            <Card.Img variant="top" src={home.image[0]} />
+            <Card.Img style={{maxHeight:'30vh'}} variant="top" src={home.image[0]} />
             <Card.Body>
-              <Card.Title>{home.city}</Card.Title>
+              <Card.Title>
+                {home.city}
+                <span style={{color: '#aaa'}}>{home.inSale ? ' - En Venta' : ' - En Renta'}</span>
+              </Card.Title>
               <Card.Text>
                 <FontAwesomeIcon className='ms-1 me-2'icon={faShower} /> {home.bathrooms} 
                 <FontAwesomeIcon className='ms-4 me-2' icon={faBed} /> {home.bedrooms}

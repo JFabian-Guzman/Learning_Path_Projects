@@ -23,7 +23,7 @@ const ProductsList = ( ) => {
       className='d-flex flex-column align-items-between
       justify-content-center px-5 last-listed-container'>
         {/*Fetch the last three listed houses*/}
-        <Row xs={1} md={2} lg={3} className="g-5 mb-5">
+        <Row xs={1} md={2} lg={3} className="g-5 mb-5 d-flex justify-content-center align-items-center">
           {homes.slice(0, 3).map((home) => (
             <Col key={home._id} className='d-flex justify-content-center align-items-center'>
               <CardSpecs home={home} />
