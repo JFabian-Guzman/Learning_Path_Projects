@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import PriceInput from './micro_components/PriceInput';
+import FilterSwitch from './micro_components/FilterSwitch';
 
 const FiltersNav = () => {
 
@@ -27,25 +28,11 @@ const FiltersNav = () => {
             <NavDropdown title="Precio" id="navbarScrollingDropdown">
               <PriceInput />
             </NavDropdown>
-            <NavDropdown title="Habitaciones" id="navbarScrollingDropdown">
-              <NavDropdown.Item>1</NavDropdown.Item>
-              <NavDropdown.Item>2</NavDropdown.Item>
-              <NavDropdown.Item>3</NavDropdown.Item>
-              <NavDropdown.Item>4</NavDropdown.Item>
-              <NavDropdown.Item>5</NavDropdown.Item>
-              <NavDropdown.Item>6</NavDropdown.Item>
-              <NavDropdown.Item>7</NavDropdown.Item>
-              <NavDropdown.Item>8</NavDropdown.Item>
+            <NavDropdown title="Cuartos" id="navbarScrollingDropdown">
+              < FilterSwitch />
             </NavDropdown>
             <NavDropdown title="Baños" id="navbarScrollingDropdown">
-              <NavDropdown.Item>1</NavDropdown.Item>
-              <NavDropdown.Item>2</NavDropdown.Item>
-              <NavDropdown.Item>3</NavDropdown.Item>
-              <NavDropdown.Item>4</NavDropdown.Item>
-              <NavDropdown.Item>5</NavDropdown.Item>
-              <NavDropdown.Item>6</NavDropdown.Item>
-              <NavDropdown.Item>7</NavDropdown.Item>
-              <NavDropdown.Item>8</NavDropdown.Item>
+              < FilterSwitch />
             </NavDropdown>
             <NavDropdown title="Propiedad" id="navbarScrollingDropdown">
               <Form.Check className='ms-2 flt-checkbox' id='houseCheckBox' type="checkbox" label="Casa" />

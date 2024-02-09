@@ -61,23 +61,23 @@ const HouseScreen = () => {
           <p className='h-100 d-flex justify-content-around align-items-center
             fs-5'>
             <span>
-              <span>Baños:</span> {home.bathrooms}
+              <span style={{color: '#aaa'}}>Baños:</span> {home.bathrooms}
             </span>
             |
             <span>
-              Cuartos: {home.bedrooms}
+              <span style={{color: '#aaa'}}>Cuartos:</span> {home.bedrooms}
             </span>
             |
             <span>
-              Interior: {home.area} m²
+              <span style={{color: '#aaa'}}>Interior:</span> {home.area} m²
             </span>
             |
             <span>
-              Propiedad: {home.area} m²
+              <span style={{color: '#aaa'}}>Propiedad:</span> {home.area} m²
             </span>
             |
             <span>
-              Hogar: {home.area} m²
+              <span style={{color: '#aaa'}}>Hogar:</span> {home.area} m²
             </span>
           </p>
         </Container>

@@ -103,6 +103,18 @@ input[type="range"]::-ms-slider-thumb {
   border: none !important;
 }
 
+/* Switch */
+.switch-btn {
+  border: none;
+  background-color: var(--clr-darkolivegreen);
+  color: white;
+}
+
+.switch-btn:hover {
+  filter: brightness(1.1);
+}
+/* End Switch */
+
 #navbarScrollingDropdown {
   border-radius: 10px;
   border: 1px solid var(--clr-darkolivegreen) !important;
