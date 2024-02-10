@@ -6,6 +6,7 @@ import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import houseRoutes from './routes/houseRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import agentRoutes from './routes/agentRoutes.js';
 const port = process.env.PORT || 5000;
 
 connectDB(); // Connect to the database
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/houses', houseRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/agents', agentRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
