@@ -2,12 +2,12 @@ import FiltersNav from "../components/FiltersNav"
 import '../assets/style/BuyScreen.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import CardSpecs from '../components/micro_components/CardSpecs'
-import { useGetProductsQuery } from "../slices/housesApiSlice"
+import { useGetHousesQuery } from "../slices/housesApiSlice"
 
 const BuyScreen = () => {
 
 
-  const { data: houses, error, isLoading } = useGetProductsQuery();
+  const { data: houses, error, isLoading } = useGetHousesQuery();
 
   return (
     <>
