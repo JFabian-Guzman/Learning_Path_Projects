@@ -2,6 +2,7 @@ import { Container, Row, Col, Image, Button } from 'react-bootstrap'
 import { useGetHouseDetailsQuery } from '../slices/housesApiSlice'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import Load from '../components/micro_components/Load'
 
 const HouseScreen = () => {
   const { id: houseId } = useParams();
@@ -20,7 +21,7 @@ const HouseScreen = () => {
   return (
     <>
     {isLoading ? (
-      <h2>is loading...</h2>
+      <Load />
     ) : error ? (
       <p>{error?.data?.message || error.error}</p>
     ) : (

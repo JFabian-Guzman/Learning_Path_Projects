@@ -1,12 +1,14 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react'
 import { useLoginMutation } from '../../slices/usersApiSlice';
 import { setCredentials } from '../../slices/authSlice';
 import { toast } from 'react-toastify';
+import Load from './Load';
 
 const FormLogin = () => {
 
@@ -20,24 +22,20 @@ const FormLogin = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  const { search } = useLocation();
-  const searchParams = new URLSearchParams(search);
-  const redirect = searchParams.get('redirect') || '/';
-
   useEffect(() => {
     if ( userInfo ) {
-      navigate(redirect); 
+      navigate('/');
     }
-  }, [userInfo, redirect, navigate]);
-
+  }, [userInfo, navigate]);
+    
 
   const handleClick = async (e) => {
     e.preventDefault();
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({...res,}));
-      navigate(redirect);
-      toast.success(`Bienvenido ${res.name}!`);
+      navigate('/');
+      toast.success(`👋 Hola ${res.name}!`,{icon: false});
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -81,11 +79,12 @@ const FormLogin = () => {
       </Form.Group>
       <Button onClick={handleClick} variant="outline-success" className='w-100 mb-2' type="submit"
       disabled={isLoading}>
-        Iniciar sesión
+        {isLoading ? <Container className='position-relative'><Load /></Container> :
+          <span>Iniciar sesión</span>}
       </Button>
-      {isLoading && <p>Cambiar esto...</p>}
-      <p>No tienes una cuenta?
-        <Link to={ redirect ? `/register?redirect=${redirect}?` : '/register' }><span>Registrate aquí</span></Link>
+
+      <p className='position-relative'>No tienes una cuenta?
+        <Link to='/register'><span>Registrate aquí</span></Link>
       </p>
     </Form>
   )

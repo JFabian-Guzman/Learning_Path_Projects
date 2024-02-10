@@ -3,6 +3,7 @@ import '../assets/style/BuyScreen.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import CardSpecs from '../components/micro_components/CardSpecs'
 import { useGetHousesQuery } from "../slices/housesApiSlice"
+import Load from "../components/micro_components/Load"
 
 const BuyScreen = () => {
 
@@ -12,7 +13,7 @@ const BuyScreen = () => {
   return (
     <>
       {isLoading ? (
-        <h2>is loading...</h2>
+        <Load />
       ) : error ? (
         <p>{error?.data?.message || error.error}</p>
       ) : (

@@ -36,24 +36,21 @@ const Header = () => {
     <>
       <Navbar expand='lg' sticky='top' bg="light" data-bs-theme="light"
       >
-        <Container fluid >
+        <Container  >
           <LinkContainer to="/" style={{ color: 'var(--clr-darkolivegreen)'}}>
             <Navbar.Brand  className='ms-5 fs-2'>Oasis</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav>
-              <LinkContainer to="/catalog/buy">
+              <LinkContainer to="/catalog">
                 <Nav.Link>Comprar</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/catalog/rent">
-                <Nav.Link>Rentar</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/sell">
                 <Nav.Link>Vender</Nav.Link>
               </LinkContainer>
               {userInfo ? (
-                <NavDropdown className='me-3' title={userInfo.name} >
+                <NavDropdown title={`${userInfo.name}`} >
                   <LinkContainer to="/profile">
                   <NavDropdown.Item>Perfil</NavDropdown.Item>
                   </LinkContainer>

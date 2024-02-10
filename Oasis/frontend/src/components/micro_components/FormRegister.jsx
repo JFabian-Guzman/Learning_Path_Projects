@@ -4,10 +4,12 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Link } from 'react-router-dom';
 import { useRegisterMutation } from '../../slices/usersApiSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { setCredentials } from '../../slices/authSlice';
 import { toast } from 'react-toastify';
+import Load from './Load';
+import Container from 'react-bootstrap/Container';
 
 const FormRegister = () => {
 
@@ -23,15 +25,11 @@ const FormRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { search } = useLocation();
-  const searchParams = new URLSearchParams(search);
-  const redirect = searchParams.get('redirect') || '/';
-
   useEffect(() => {
     if ( userInfo ) {
-      navigate(redirect);
+      navigate('/');
     }
-  }, [userInfo, redirect, navigate]);
+  }, [userInfo, navigate]);
 
 
   const handleClick = async (e) => {
@@ -42,10 +40,10 @@ const FormRegister = () => {
       try {
         const res = await register({ name, email, phone, password }).unwrap();
         dispatch(setCredentials({...res,}));
-        navigate(redirect);
-        toast.success(`Bienvenido ${res.name}!`);
+        navigate('/');
+        toast.success(`👋 Hola ${res.name}!`,{icon: false});
       } catch (err) {
-        toast.error(err?.data?.message || err.error);
+        toast.error('Error al registrarse');
       }
     }
 
@@ -122,13 +120,12 @@ const FormRegister = () => {
       <Button variant="outline-success mb-2" 
       className='w-100' type="submit"
       onClick={handleClick}>
-        Registrarse
+        {isLoading ? <Container className='position-relative'><Load /></Container> :
+          <span>Registrarse</span>}
       </Button>
       { isLoading && <p>Registrando...</p>}
       <p>Ya tienes una cuenta?
-        <Link to={ redirect ? 
-            `/login?redirect=${redirect}` :
-            '/login'}>
+        <Link to='/login'>
           <span>Inicia sesion aquí</span>
         </Link>
       </p>
