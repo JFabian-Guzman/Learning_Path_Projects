@@ -37,6 +37,7 @@ const FormLogin = () => {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({...res,}));
       navigate(redirect);
+      toast.success(`Bienvenido ${res.name}!`);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
