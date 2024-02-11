@@ -4,11 +4,13 @@ import { Container, Row, Col } from 'react-bootstrap'
 import CardSpecs from '../components/micro_components/CardSpecs'
 import { useGetHousesQuery } from "../slices/housesApiSlice"
 import Load from "../components/micro_components/Load"
+import { useRef } from "react"
 
 const BuyScreen = () => {
 
 
   const { data: houses, error, isLoading } = useGetHousesQuery();
+  const animation = useRef(null);
 
   return (
     <>
@@ -27,7 +29,7 @@ const BuyScreen = () => {
               <Row xs={1} md={2} lg={3} className="g-5 mb-5 d-flex justify-content-center align-items-center">
                 {houses.map((house) => (
                   <Col key={house._id} className='d-flex justify-content-center align-items-center'>
-                    <CardSpecs home={house} />
+                    <CardSpecs home={house} ref={animation}/>
                   </Col>
                 ))}
               </Row>

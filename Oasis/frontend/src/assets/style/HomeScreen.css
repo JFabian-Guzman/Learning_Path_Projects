@@ -128,4 +128,11 @@
 .specs-container:hover{
   transform: scale(1.03);
 }
+
+.heart-animation {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+}
 /* End of Card Specs */

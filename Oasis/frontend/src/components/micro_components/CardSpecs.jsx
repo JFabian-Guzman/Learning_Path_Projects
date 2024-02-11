@@ -1,20 +1,59 @@
 import Card from 'react-bootstrap/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShower } from '@fortawesome/free-solid-svg-icons'
+import { faLessThan, faShower } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 import { faBed } from '@fortawesome/free-solid-svg-icons'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import { LinkContainer } from 'react-router-bootstrap'
+import Lottie from "lottie-react";
+import heart from "../../assets/lottie/heart.json";
+import { useEffect, forwardRef, useRef } from 'react';
+import { useState } from 'react';
+
+const CardSpecs = forwardRef(({ home }, ref) => {
+
+  const animation = useRef();
+  const [like , setLike] = useState(false);
+  const [firstRun, setFirstRun] = useState(true);
+
+  useEffect(() => {
+    if( firstRun ) {
+      if( like ) {
+        animation.current.goToAndStop(66, true);
+      } else {
+        animation.current.goToAndStop(19, true);
+      }
+      setFirstRun(false);
+    } else {
+      if(like) {
+        animation.current.playSegments([19, 66], true);
+      } else {
+        animation.current.playSegments([0, 19], true);
+      }
+    }
+    
+  }, [like]);
 
 
-const CardSpecs = ( {home} ) => {
   return (
     <>
-      <LinkContainer  className='specs-container' to={`/catalog/${home._id}`}>
-        <Card>
+        <Card className='specs-container'>
             <div className='price mt-2 ms-2 p-2'>
               {home.price}
             </div>
-            <Card.Img style={{maxHeight:'30vh'}} variant="top" src={home.image[0]} />
+            <div className='heart-animation'>
+              <Lottie 
+                animationData={heart}
+                style={{width: 50, height: 50}}
+                lottieRef={animation}
+                autoplay={false} 
+                loop={false}
+                onClick={() => setLike(!like)}
+              />
+            </div>
+            <Link   to={`/catalog/${home._id}`}>
+              <Card.Img style={{maxHeight:'30vh'}} variant="top" src={home.image[0]} />
+            </Link>
             <Card.Body>
               <Card.Title>
                 {home.city}
@@ -27,10 +66,9 @@ const CardSpecs = ( {home} ) => {
               </Card.Text>
             </Card.Body>
         </Card>
-      </LinkContainer>
     </>
     
   )
-}
+});
 
 export default CardSpecs

@@ -1,0 +1,21 @@
+.agent-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.agent-card:hover {
+  transform: scale(1.05);
+}
+
+.agent-img {
+  border-radius: 17px;
+}
+
+.contact-btn {
+  background: var(--clr-forestgreen);
+  border: none !important;
+}
+
+.agent-card:hover .contact-btn {
+  filter: brightness(1.4);
+}

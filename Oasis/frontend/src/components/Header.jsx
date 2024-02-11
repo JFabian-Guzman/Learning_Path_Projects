@@ -46,15 +46,15 @@ const Header = () => {
               <LinkContainer to="/catalog">
                 <Nav.Link>Comprar</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/agents">
-                <Nav.Link>Buscar Agente</Nav.Link>
-              </LinkContainer>
               <LinkContainer to="/sell">
                 <Nav.Link>Vender</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/agents">
+                <Nav.Link>Buscar Agente</Nav.Link>
+              </LinkContainer>
               {userInfo ? (
                 <NavDropdown title={`${userInfo.name}`} >
-                  <LinkContainer to="/profile">
+                  <LinkContainer to={`/profile/${userInfo._id}`}>
                   <NavDropdown.Item>Perfil</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/favorites">

@@ -18,6 +18,7 @@ import SellScreen from './screens/SellScreen';
 import HouseIDScreen from './screens/HouseScreen';
 import PrivateRoute from './components/PrivateRoutes';
 import AgentScreen from './screens/AgentScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="/catalog" element={<BuyScreen />} />
       <Route path="/catalog/:id" element={<HouseIDScreen />} />
       <Route path="/agents" element={<AgentScreen />} />
+      <Route path="/profile/:id" element={<ProfileScreen />} />
 
 
       {/* Everything inside this route is private*/}
