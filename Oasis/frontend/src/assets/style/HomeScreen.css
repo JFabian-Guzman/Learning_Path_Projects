@@ -131,8 +131,13 @@
 
 .heart-animation {
   position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 5;
+  top: 5px;
+  right: 5px;
+  z-index: 1;
+}
+
+.heart-animation svg{
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
 }
 /* End of Card Specs */

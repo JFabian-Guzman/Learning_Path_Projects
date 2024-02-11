@@ -1,34 +1,47 @@
 import Card from 'react-bootstrap/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLessThan, faShower } from '@fortawesome/free-solid-svg-icons'
+import { faShower } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { faBed } from '@fortawesome/free-solid-svg-icons'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
-import { LinkContainer } from 'react-router-bootstrap'
 import Lottie from "lottie-react";
 import heart from "../../assets/lottie/heart.json";
 import { useEffect, forwardRef, useRef } from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from '../../slices/favoriteSlice';
 
 const CardSpecs = forwardRef(({ home }, ref) => {
 
+  // Animation
   const animation = useRef();
   const [like , setLike] = useState(false);
   const [firstRun, setFirstRun] = useState(true);
 
+  const dispatch = useDispatch();
+
+  // Select favorites
+  const myFavorites = useSelector((state) => state.myFavorites);
+  const {favorites} = myFavorites;
+
+
   useEffect(() => {
     if( firstRun ) {
-      if( like ) {
-        animation.current.goToAndStop(66, true);
-      } else {
-        animation.current.goToAndStop(19, true);
-      }
+      favorites.find((favorite) => {
+        if( favorite._id === home._id) {
+          animation.current.goToAndStop(66, true);
+        } else {
+          animation.current.goToAndStop(19, true);
+        }
+      });
       setFirstRun(false);
     } else {
       if(like) {
         animation.current.playSegments([19, 66], true);
+        dispatch(addFavorite({...home}));
       } else {
         animation.current.playSegments([0, 19], true);
+        dispatch(removeFavorite(home._id));
       }
     }
     
@@ -42,7 +55,7 @@ const CardSpecs = forwardRef(({ home }, ref) => {
               {home.price}
             </div>
             <div className='heart-animation'>
-              <Lottie 
+              <Lottie
                 animationData={heart}
                 style={{width: 50, height: 50}}
                 lottieRef={animation}
@@ -52,7 +65,7 @@ const CardSpecs = forwardRef(({ home }, ref) => {
               />
             </div>
             <Link   to={`/catalog/${home._id}`}>
-              <Card.Img style={{maxHeight:'30vh'}} variant="top" src={home.image[0]} />
+              <Card.Img style={{height:'30vh'}} variant="top" src={home.image[0]} />
             </Link>
             <Card.Body>
               <Card.Title>

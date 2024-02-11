@@ -1,7 +1,14 @@
 import { Image, Container, Row, Col } from 'react-bootstrap'
 import Avatar from '../assets/images/avatar.jpg'
+import { useSelector } from 'react-redux'
+import CardSpecs from '../components/micro_components/CardSpecs'
 
 const ProfileScreen = () => {
+
+  const myFavorites = useSelector((state) => state.myFavorites);
+  const {favorites} = myFavorites;
+
+
   return (
     <>
     <Container fluid className="d-flex flex-column p-0">
@@ -30,8 +37,18 @@ const ProfileScreen = () => {
           </Row>
         </Row>
       </Container>
-      <Container fluid className="w-100">
-        <h2>Favoritos</h2>
+      <h2 className='mt-5'>Favoritos</h2>
+      <Container fluid
+        className='d-flex flex-column align-items-between
+        justify-content-center px-5 last-listed-container mt-5'>
+
+        <Row xs={1} md={2} lg={3} className="g-5 mb-5 d-flex justify-content-center align-items-center">
+          {favorites.map((house) => (
+            <Col key={house._id} className='d-flex justify-content-center align-items-center'>
+              <CardSpecs home={house}/>
+            </Col>
+          ))}
+        </Row>
       </Container>
     </Container>
   </>

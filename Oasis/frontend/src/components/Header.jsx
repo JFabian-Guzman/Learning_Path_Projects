@@ -57,9 +57,6 @@ const Header = () => {
                   <LinkContainer to={`/profile/${userInfo._id}`}>
                   <NavDropdown.Item>Perfil</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="/favorites">
-                  <NavDropdown.Item>Favoritos</NavDropdown.Item>
-                  </LinkContainer>
                   <NavDropdown.Divider />
                   <NavDropdown.Item
                   onClick={handleClick}>Salir de la sesión</NavDropdown.Item>
