@@ -6,6 +6,7 @@ const AgentScreen = () => {
 
   const { data: agents, error, isLoading } = useGetAgetnsQuery();
 
+
   return (
     <>
       {isLoading ? (
@@ -17,13 +18,14 @@ const AgentScreen = () => {
         <Container fluid
           className='d-flex flex-column align-items-between
           justify-content-center mt-5 last-listed-container'>
-            <Row xs={1} md={2} lg={3} className="g-5 mb-5 d-flex justify-content-center align-items-center">
-              {agents.map((agent) => (
-                <Col key={agent._id} className='d-flex justify-content-center align-items-center'>
-                <CardAgent agent={agent}/>
-                </Col>
-              ))}
+          {agents.map((agent) => (
+            <Row key={agent._id} xs={1} md={2} lg={3} className="g-5 mb-5 d-flex justify-content-center align-items-center">
+              <Col  className='d-flex justify-content-center align-items-center w-100'
+              >
+              <CardAgent agent={agent}/>
+              </Col>
             </Row>
+          ))}
           </Container>
         </>
       )}
