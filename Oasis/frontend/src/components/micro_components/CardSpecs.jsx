@@ -13,29 +13,28 @@ import { addFavorite, removeFavorite } from '../../slices/favoriteSlice';
 
 const CardSpecs = forwardRef(({ home }, ref) => {
 
-  // Animation
-  const animation = useRef();
-  const [like , setLike] = useState(false);
-  const [firstRun, setFirstRun] = useState(true);
-
-  const dispatch = useDispatch();
-
   // Select favorites
   const myFavorites = useSelector((state) => state.myFavorites);
-  const {favorites} = myFavorites;
+  let {favorites} = myFavorites;
+  // Animation
+  const animation = useRef();
+  const [like , setLike] = useState(favorites.find((favorite) => favorite._id === home._id));
+  const [firstRender, setFirstRender] = useState(true);
+  
+  const dispatch = useDispatch();
 
 
+  
   useEffect(() => {
-    if( firstRun ) {
-      favorites.find((favorite) => {
-        if( favorite._id === home._id) {
-          animation.current.goToAndStop(66, true);
-        } else {
-          animation.current.goToAndStop(19, true);
-        }
-      });
-      setFirstRun(false);
+    if( firstRender ) {
+      if( like ) {
+        animation.current.goToAndStop(66, true);
+      } else {
+        animation.current.goToAndStop(19, true);
+      }
+      setFirstRender(false);
     } else {
+      
       if(like) {
         animation.current.playSegments([19, 66], true);
         dispatch(addFavorite({...home}));
@@ -44,9 +43,9 @@ const CardSpecs = forwardRef(({ home }, ref) => {
         dispatch(removeFavorite(home._id));
       }
     }
-    
-  }, [like]);
-
+    // The next line supress warning
+    // eslint-disable-next-line
+  }, [like, dispatch, home]);
 
   return (
     <>

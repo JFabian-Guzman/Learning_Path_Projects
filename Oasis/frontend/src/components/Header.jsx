@@ -21,7 +21,6 @@ const Header = () => {
 
   const [ logoutApi ] = useLogoutMutation();
 
-
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -58,9 +57,9 @@ const Header = () => {
                   <NavDropdown.Item>Perfil</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item
-                  onClick={handleClick}>Salir de la sesión</NavDropdown.Item>
-                </NavDropdown>
+                    <NavDropdown.Item
+                    onClick={handleClick}>Salir de la sesión</NavDropdown.Item>
+                  </NavDropdown>
               ) : (
                 <Link className="nav-link" to="/login"><FontAwesomeIcon icon={faUser} /></Link>
               )}

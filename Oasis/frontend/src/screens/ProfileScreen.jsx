@@ -1,5 +1,4 @@
 import { Image, Container, Row, Col } from 'react-bootstrap'
-import Avatar from '../assets/images/avatar.jpg'
 import { useSelector } from 'react-redux'
 import CardSpecs from '../components/micro_components/CardSpecs'
 
@@ -8,6 +7,7 @@ const ProfileScreen = () => {
   const myFavorites = useSelector((state) => state.myFavorites);
   const {favorites} = myFavorites;
 
+  const { userInfo } = useSelector((state) => state.auth);
 
   return (
     <>
@@ -19,25 +19,25 @@ const ProfileScreen = () => {
         <Row className="w-100 d-flex justify-content-center">
           <Row>
             <Col className='text-center'>
-            <Image src={Avatar} roundedCircle  style={{ maxWidth: '10vw'}}/>
+            <Image src={userInfo.image} roundedCircle  style={{ maxWidth: '10vw'}}/>
             </Col>
           </Row>
           <Row className='mt-5'>
             <Col></Col>
             <Col className='text-center'>
-              <span>Nombre: <br /> John doe </span>
+              <span>Nombre: <br /> {userInfo.name} </span>
             </Col>
             <Col className='text-center'>
-              <span>Celular: <br /> 1234-5678 </span>
+              <span>Celular: <br /> {userInfo.phone} </span>
             </Col>
             <Col className='text-center'>
-              <span>Correo: <br /> john@email.com </span>
+              <span>Correo: <br /> {userInfo.email} </span>
             </Col>
             <Col></Col>
           </Row>
         </Row>
       </Container>
-      <h2 className='mt-5'>Favoritos</h2>
+      <h2 className='mt-5 ms-4' style={{color:'var(--clr-darkolivegreen)'}}>Favoritos</h2>
       <Container fluid
         className='d-flex flex-column align-items-between
         justify-content-center px-5 last-listed-container mt-5'>
