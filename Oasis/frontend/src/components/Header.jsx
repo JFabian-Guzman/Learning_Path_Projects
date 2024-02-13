@@ -45,7 +45,7 @@ const Header = () => {
               <LinkContainer to="/catalog">
                 <Nav.Link>Comprar</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/sell">
+              <LinkContainer to="/sellSteps">
                 <Nav.Link>Vender</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/agents">

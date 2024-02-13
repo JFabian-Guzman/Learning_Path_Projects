@@ -6,10 +6,11 @@ import { faBed } from '@fortawesome/free-solid-svg-icons'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import Lottie from "lottie-react";
 import heart from "../../assets/lottie/heart.json";
-import { useEffect, forwardRef, useRef } from 'react';
+import { useEffect, forwardRef, useRef} from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../slices/favoriteSlice';
+import { toast } from 'react-toastify';
 
 const CardSpecs = forwardRef(({ home }, ref) => {
 
@@ -20,11 +21,20 @@ const CardSpecs = forwardRef(({ home }, ref) => {
   const animation = useRef();
   const [like , setLike] = useState(favorites.find((favorite) => favorite._id === home._id));
   const [firstRender, setFirstRender] = useState(true);
+  // Check if the user is logged in
+  const { userInfo } = useSelector((state) => state.auth);
   
   const dispatch = useDispatch();
 
+  const handleClick = () => {
+    // Check if the user is logged in
+    if( !userInfo ) {
+      toast.info('Debes iniciar sesión');
+    } else {
+      setLike(!like);
+    }
+  }
 
-  
   useEffect(() => {
     if( firstRender ) {
       if( like ) {
@@ -34,7 +44,6 @@ const CardSpecs = forwardRef(({ home }, ref) => {
       }
       setFirstRender(false);
     } else {
-      
       if(like) {
         animation.current.playSegments([19, 66], true);
         dispatch(addFavorite({...home}));
@@ -60,7 +69,7 @@ const CardSpecs = forwardRef(({ home }, ref) => {
                 lottieRef={animation}
                 autoplay={false} 
                 loop={false}
-                onClick={() => setLike(!like)}
+                onClick={handleClick}
               />
             </div>
             <Link   to={`/catalog/${home._id}`}>
