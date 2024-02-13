@@ -15,8 +15,20 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5
     }),
+    createHouse: builder.mutation({ 
+      query: (data) => ({
+        url: HOUSES_URL,
+        method: 'POST',
+        body: data,
+        }),
+      invalidatesTags: ['House'], // Invalidates the cache for the 'House' tag
+    }),
   }),
 })
 
 
-export const { useGetHousesQuery, useGetHouseDetailsQuery } = productsApiSlice;
+export const { 
+  useGetHousesQuery,
+  useGetHouseDetailsQuery,
+  useCreateHouseMutation
+} = productsApiSlice;

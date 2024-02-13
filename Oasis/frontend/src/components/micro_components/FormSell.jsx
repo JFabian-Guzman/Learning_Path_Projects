@@ -2,84 +2,195 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { useCreateHouseMutation } from '../../slices/housesApiSlice';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import Load from './Load';
 
 const FormSell = () => {
-  return (
-    <Form className='w-100 h-100 form
-    d-flex flex-column justify-content-center
-    align-items-center'>
-      {/* Location */}
-      <Form.Group className="mb-3 mt-5 w-50">
-        <FloatingLabel controlId="cityFloatingInput" label="Provincia" className="mb-3">
-          <Form.Control type="text" placeholder="Provincia" />
-        </FloatingLabel>
-      </Form.Group>
-      <Form.Group className="mb-3 w-50">
-        <FloatingLabel controlId="countyFloatingInput" label="Cantón" className="mb-3">
-          <Form.Control type="text" placeholder="Cantón" />
-        </FloatingLabel>
-      </Form.Group>
-      {/* Description */}
-      <Form.Group className="mb-3 w-50">
-        <FloatingLabel controlId="descriptionFloatingTextarea" label="Descripción">
-          <Form.Control
-            as="textarea"
-            placeholder="Descripción"
-            style={{ height: '100px' }}
-          />
-        </FloatingLabel>
-      </Form.Group>
-      {/* Price */}
-      <Form.Group className="mb-3 w-50">
-        <FloatingLabel controlId="valueFloatingInput" label="Valor" className="mb-3">
-          <Form.Control type="text" placeholder="Valor" />
-        </FloatingLabel>
-      </Form.Group>
-      {/* Area */}
-      <Form.Group className="mb-3 w-50">
-        <FloatingLabel controlId="landFloatingInput" label="Área del lote" className="mb-3">
-          <Form.Control type="text" placeholder="Lote" />
-        </FloatingLabel>
-      </Form.Group>
-      <Form.Group className="mb-3 w-50">
-      <FloatingLabel controlId="houseFloatingInput" label="Área de la casa" className="mb-3">
-          <Form.Control type="text" placeholder="Lote" />
-        </FloatingLabel>
-      </Form.Group>
-      {/* Bedrooms  & Bathrooms*/}
 
-      <Form.Group className="mb-3 w-50">
-        <span>Baños y cuartos</span>
-        <Container className='d-flex 
-        align-items-center
-        justify-content-center'
-        >
-          <Form.Control type="number"
-          placeholder="cuartos" id='roomNumberInput' 
-          className=' w-25'
-          min='0' max='20'/>
-          <Form.Control type="number" id='bathroomNumberInput' 
-          placeholder="baños" className='ms-2 w-25'
-          min='0' max='20'/>
-        </Container>
-      </Form.Group>
-      {/* Image */}
-      <Form.Group className="mb-3 w-50">
-        <span>Seleccionar imagenes</span>
-        <Form.Control className='mt-3' id='imagesInput' type="file" multiple />
-      </Form.Group>
-      {/* Rent or Sale or Rent & Sale */}
-      <Form.Group className="mb-3 d-flex">
-        <Form.Check id='sellCheckBox' type="checkbox" 
-        label="Vender"/>
-        <Form.Check id='rentCheckBox' type="checkbox"
-        label="Rentar" className='ms-3' />
-      </Form.Group>
-      
-      <Button variant="outline-dark mb-5" className='w-50' type="submit">
-        Listar propiedad
-      </Button>
-    </Form>
+  const [createHouse, { error, isLoading }] = useCreateHouseMutation();
+  const { userInfo } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  // Data
+  const [city, setCity] = useState('');
+  const [county, setCounty] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [houseArea, setHouseArea] = useState('');
+  const [totalArea, setTotalArea] = useState('');
+  const [bathrooms, setBathrooms] = useState('');
+  const [bedrooms, setBedrooms] = useState('');
+  const [image, setImage] = useState('');
+  const [inSale, setInSale] = useState(false);
+  const [forRent, setForRent] = useState(false);
+
+  // Send data
+  const handleNewHouse = async ( e ) => {
+    e.preventDefault();
+    const newHouse ={
+      city,
+      county,
+      description,
+      price,
+      totalArea,
+      houseArea,
+      bathrooms,
+      bedrooms,
+      inSale,
+      forRent
+    }
+
+
+    if (window.confirm('¿Está seguro de que desea listar esta propiedad?')) {
+      try {
+        await createHouse(newHouse);
+        navigate(`/profile/${userInfo._id}`);
+        toast.success('Propiedad listada exitosamente');
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
+  }
+  // TODO: Every form input is required
+  return (
+    <>
+    { isLoading ? (
+        <Load />
+      ) : error ? (
+        <h1>{error}</h1>
+      ) : (
+        <>
+            <Form className='w-100 h-100 form
+        d-flex flex-column justify-content-center
+        align-items-center'>
+          {/* Location */}
+          <Form.Group className="mb-3 mt-5 w-50">
+            <FloatingLabel controlId="city" label="Provincia" className="mb-3">
+              <Form.Control
+              type="text"
+              placeholder="Provincia"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              />
+            </FloatingLabel>
+          </Form.Group>
+          <Form.Group className="mb-3 w-50">
+            <FloatingLabel controlId="county" label="Cantón" className="mb-3">
+              <Form.Control
+              type="text"
+              placeholder="Cantón"
+              value={county}
+              onChange={(e) => setCounty(e.target.value)}/>
+            </FloatingLabel>
+          </Form.Group>
+          {/* Description */}
+          <Form.Group className="mb-3 w-50">
+            <FloatingLabel controlId="description" label="Descripción">
+              <Form.Control
+                as="textarea"
+                value={description}
+                placeholder="Descripción"
+                style={{ height: '100px' }}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </FloatingLabel>
+          </Form.Group>
+          {/* Price */}
+          <Form.Group className="mb-3 w-50">
+            <FloatingLabel controlId="price" label="Valor" className="mb-3">
+              <Form.Control
+              value={price}
+              type="text"
+              placeholder="Valor"
+              onChange={(e) => setPrice(e.target.value)}
+              />
+            </FloatingLabel>
+          </Form.Group>
+          {/* Area */}
+          <Form.Group className="mb-3 w-50">
+            <FloatingLabel controlId="houseArea" label="Área del lote" className="mb-3">
+              <Form.Control
+                value={houseArea}
+                type="text"
+                placeholder="Área del lote" 
+                onChange={(e) => setHouseArea(e.target.value)}
+                />
+            </FloatingLabel>
+          </Form.Group>
+          <Form.Group className="mb-3 w-50">
+          <FloatingLabel controlId="TotalArea" label="Área de la casa" className="mb-3">
+              <Form.Control
+                value={totalArea}
+                type="text"
+                placeholder="Área de la casa"
+                onChange={(e) => setTotalArea(e.target.value)}
+                />
+            </FloatingLabel>
+          </Form.Group>
+          {/* Bedrooms  & Bathrooms*/}
+
+          <Form.Group className="mb-3 w-50">
+            <span>Baños y cuartos</span>
+            <Container className='d-flex 
+            align-items-center
+            justify-content-center'
+            >
+              <Form.Control type="number"
+              placeholder="cuartos" id='bedrooms' 
+              className=' w-25'
+              min='0' max='20'
+              value={bedrooms}
+              onChange={(e)=>setBedrooms(e.target.value)}/>
+              <Form.Control type="number" id='batrooms' 
+              placeholder="baños" className='ms-2 w-25'
+              min='0' max='20'
+              value={bathrooms}
+              onChange={(e)=> setBathrooms(e.target.value)}/>
+            </Container>
+          </Form.Group>
+          {/* Image */}
+          <Form.Group className="mb-3 w-50">
+            <span>Seleccionar imagenes</span>
+            <Form.Control
+              className='mt-3'
+              id='imagesInput'
+              type="file" 
+              multiple 
+              />
+          </Form.Group>
+          {/* Rent or Sale or Rent & Sale */}
+          <Form.Group className="mb-3 d-flex">
+            <Form.Check 
+            id='inSale' 
+            type="checkbox" 
+            label="Vender"
+            value={inSale}
+            onChange={(e)=> setInSale(e.target.value)}
+            />
+            <Form.Check 
+            id='forRent' type="checkbox"
+            label="Rentar" className='ms-3'
+            value={forRent}
+            onChange={(e)=> setForRent(e.target.value)}
+            />
+          </Form.Group>
+          
+          <Button variant="outline-dark mb-5" 
+            className='w-50' 
+            type="submit"
+            onClick={handleNewHouse}
+            >
+            Listar propiedad
+          </Button>
+        </Form>
+        </>
+      )
+    }
+    </>
   )
 }
 

@@ -23,4 +23,34 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 });
 
-export { getProducts, getProductById };
+// @desc    Create a houses
+// @route   POST /api/houses
+// @access  Private 
+const createHouse = asyncHandler(async (req, res) => {
+  const { 
+    city, county, description, price, 
+    totalArea, houseArea, bathrooms, bedrooms,
+    inSale, forRent 
+  } = req.body;
+
+
+  const house = new House({
+    user: req.user._id,
+    city, 
+    county,
+    description, 
+    price,
+    totalArea, 
+    houseArea,
+    bathrooms, 
+    bedrooms, 
+    image : ['/images/houses/house_2.jpg'],
+    inSale, 
+    forRent,
+  });
+
+  const createdHouse = await house.save();
+  res.status(201).json(createdHouse);
+});
+
+export { getProducts, getProductById, createHouse };
