@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -7,6 +8,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import houseRoutes from './routes/houseRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import agentRoutes from './routes/agentRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 const port = process.env.PORT || 5000;
 
 connectDB(); // Connect to the database
@@ -27,6 +29,11 @@ app.get('/', (req, res) => {
 app.use('/api/houses', houseRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/agents', agentRoutes);
+app.use('/api/upload', uploadRoutes);
+
+  // Make image folder static
+  const __dirname = path.resolve();
+  app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 app.use(notFound);
 app.use(errorHandler);

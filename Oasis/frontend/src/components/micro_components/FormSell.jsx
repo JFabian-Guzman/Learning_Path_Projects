@@ -2,7 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import { useCreateHouseMutation } from '../../slices/housesApiSlice';
+import { 
+  useCreateHouseMutation,
+  useUploadHouseImageMutation,
+} from '../../slices/housesApiSlice';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -12,6 +15,7 @@ import Load from './Load';
 const FormSell = () => {
 
   const [createHouse, { error, isLoading }] = useCreateHouseMutation();
+  const [uploadHouseImage, {isLoading: loadingUpload}] = useUploadHouseImageMutation();
   const { userInfo } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
@@ -28,6 +32,19 @@ const FormSell = () => {
   const [inSale, setInSale] = useState(false);
   const [forRent, setForRent] = useState(false);
 
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append('image',e.target.files[0]);
+    try {
+      const res = await uploadHouseImage(formData).unwrap();
+      toast.success('Imagen subida exitosamente');
+      // Send the image url to the state
+      setImage(res.image);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
   // Send data
   const handleNewHouse = async ( e ) => {
     e.preventDefault();
@@ -40,10 +57,10 @@ const FormSell = () => {
       houseArea,
       bathrooms,
       bedrooms,
+      image,
       inSale,
       forRent
     }
-
 
     if (window.confirm('¿Está seguro de que desea listar esta propiedad?')) {
       try {
@@ -157,10 +174,19 @@ const FormSell = () => {
             <span>Seleccionar imagenes</span>
             <Form.Control
               className='mt-3'
-              id='imagesInput'
-              type="file" 
+              type="text" 
+              placeholder="URL de la imagen"
+              value={image}
+              onChange={(e)=> setImage(e.target.value)}
               multiple 
               />
+            <Form.Control
+              type='file'
+              label='Seleccionar imagenes'
+              onChange={uploadFileHandler}
+            >
+
+            </Form.Control>
           </Form.Group>
           {/* Rent or Sale or Rent & Sale */}
           <Form.Group className="mb-3 d-flex">

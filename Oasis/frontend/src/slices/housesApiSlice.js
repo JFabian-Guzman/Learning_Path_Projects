@@ -1,4 +1,4 @@
-import { HOUSES_URL } from "../constants";
+import { HOUSES_URL, UPLOAD_URL } from "../constants";
 import { apiSlice } from "./apiSlice";
 
 export const productsApiSlice = apiSlice.injectEndpoints({
@@ -7,7 +7,8 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: HOUSES_URL,
       }),
-      keepUnusedDataFor: 5
+      keepUnusedDataFor: 5,
+      providesTags: ['Houses'], // Remember add invalidateTags in updateHouse
     }),
     getHouseDetails: builder.query({
       query: (houseId) => ({
@@ -23,6 +24,13 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         }),
       invalidatesTags: ['House'], // Invalidates the cache for the 'House' tag
     }),
+    uploadHouseImage: builder.mutation({
+      query: (data) => ({
+        url: UPLOAD_URL,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 })
 
@@ -30,5 +38,6 @@ export const productsApiSlice = apiSlice.injectEndpoints({
 export const { 
   useGetHousesQuery,
   useGetHouseDetailsQuery,
-  useCreateHouseMutation
+  useCreateHouseMutation,
+  useUploadHouseImageMutation,
 } = productsApiSlice;

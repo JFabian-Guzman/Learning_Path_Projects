@@ -30,7 +30,7 @@ const createHouse = asyncHandler(async (req, res) => {
   const { 
     city, county, description, price, 
     totalArea, houseArea, bathrooms, bedrooms,
-    inSale, forRent 
+    image, inSale, forRent 
   } = req.body;
 
 
@@ -40,11 +40,11 @@ const createHouse = asyncHandler(async (req, res) => {
     county,
     description, 
     price,
-    totalArea, 
+    totalArea,
     houseArea,
-    bathrooms, 
-    bedrooms, 
-    image : ['/images/houses/house_2.jpg'],
+    bathrooms,
+    bedrooms,
+    image : [image],
     inSale, 
     forRent,
   });
