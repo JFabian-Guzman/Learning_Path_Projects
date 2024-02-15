@@ -30,20 +30,20 @@ function fileFilter(req, file, cb) {
 }
 
 const upload = multer({ storage, fileFilter });
-const uploadSingleImage = upload.single('image');
+const uploadManyImages = upload.array('images', 10);
 
 router.post('/', (req, res) => {
-  uploadSingleImage(req, res, function (err) {
+  uploadManyImages(req, res, function (err) {
     if (err) {
       res.status(400).send({ message: err.message });
     }
 
+    console.log(req.files);
     res.status(200).send({
-      message: 'Image uploaded successfully',
-      image: `/${req.file.path}`,
+      message: 'Images uploaded successfully',
+      images: req.files,
     });
   });
-
 });
 
 export default router;

@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Load from './Load';
+import ImagesInput from './ImagesInput';
 
 const FormSell = () => {
 
@@ -28,25 +29,13 @@ const FormSell = () => {
   const [totalArea, setTotalArea] = useState('');
   const [bathrooms, setBathrooms] = useState('');
   const [bedrooms, setBedrooms] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState([]);
   const [inSale, setInSale] = useState(false);
   const [forRent, setForRent] = useState(false);
 
-  const uploadFileHandler = async (e) => {
-    const formData = new FormData();
-    formData.append('image',e.target.files[0]);
-    try {
-      const res = await uploadHouseImage(formData).unwrap();
-      toast.success('Imagen subida exitosamente');
-      // Send the image url to the state
-      setImage(res.image);
-    } catch (err) {
-      toast.error(err?.data?.message || err.error);
-    }
-  };
-
   // Send data
   const handleNewHouse = async ( e ) => {
+
     e.preventDefault();
     const newHouse ={
       city,
@@ -70,6 +59,8 @@ const FormSell = () => {
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
+    } else {
+      console.log(image); 
     }
   }
   // TODO: Every form input is required
@@ -170,24 +161,7 @@ const FormSell = () => {
             </Container>
           </Form.Group>
           {/* Image */}
-          <Form.Group className="mb-3 w-50">
-            <span>Seleccionar imagenes</span>
-            <Form.Control
-              className='mt-3'
-              type="text" 
-              placeholder="URL de la imagen"
-              value={image}
-              onChange={(e)=> setImage(e.target.value)}
-              multiple 
-              />
-            <Form.Control
-              type='file'
-              label='Seleccionar imagenes'
-              onChange={uploadFileHandler}
-            >
-
-            </Form.Control>
-          </Form.Group>
+          <ImagesInput image={image}  setImage={setImage} />
           {/* Rent or Sale or Rent & Sale */}
           <Form.Group className="mb-3 d-flex">
             <Form.Check 

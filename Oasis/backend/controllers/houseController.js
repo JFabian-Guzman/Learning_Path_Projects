@@ -44,7 +44,7 @@ const createHouse = asyncHandler(async (req, res) => {
     houseArea,
     bathrooms,
     bedrooms,
-    image : [image],
+    image,
     inSale, 
     forRent,
   });
