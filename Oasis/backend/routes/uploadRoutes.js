@@ -38,10 +38,13 @@ router.post('/', (req, res) => {
       res.status(400).send({ message: err.message });
     }
 
-    console.log(req.files);
+    const editPaths = req.files.map((file) => {
+      return { path: `/${file.path}` };
+    });
+
     res.status(200).send({
       message: 'Images uploaded successfully',
-      images: req.files,
+      images: editPaths,
     });
   });
 });

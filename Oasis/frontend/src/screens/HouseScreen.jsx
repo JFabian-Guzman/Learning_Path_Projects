@@ -14,9 +14,8 @@ const HouseScreen = () => {
     setImage(house?.image?.[0]);
   }, [house]);
 
-  const handleClick = (i) => {
-    console.log(i);
-    // setImage(e.target.src);
+  const handleClick = (e) => {
+    setImage(e.target.src);
   }
 
   return (
@@ -48,7 +47,7 @@ const HouseScreen = () => {
                 <Row key={index} className='my-2 w-100'>
                   <Col>
                     <Image src={i} alt='kitchen' fluid  style={{cursor: 'pointer'}}
-                    onClick={handleClick(i)}/>
+                    onClick={handleClick}/>
                   </Col>
                 </Row>
               ))

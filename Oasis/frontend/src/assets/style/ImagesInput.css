@@ -1,4 +1,4 @@
-.card {
+.add-img-container {
   padding: 10px;
   box-shadow: 0 0 5px #ffdfdf;
   border-radius: 5px;
@@ -6,16 +6,16 @@
   width: 50%;
 }
 
-.card .top {
+.add-img-container .top {
   text-align: center;
 }
 
-.card p{
+.add-img-container p{
   font-weight: bold;
   color: #0086fe;
 }
 
-.card button{
+.add-img-container button{
   outline: 0;
   border: 0;
   color: white;
@@ -27,7 +27,7 @@
   background: #0086fe;
 }
 
-.card .drag-area {
+.add-img-container .drag-area {
   height: 150px;
   border-radius: 5px;
   border: 2px dashed #0086fe;
@@ -41,22 +41,22 @@
   margin-top: 10px;
 }
 
-.card .drag-area .visible {
+.add-img-container .drag-area .visible {
   font-size: 18px;
 }
 
-.card .select {
+.add-img-container .select {
   color: #5256ad;
   margin-left: 5px;
   cursor: pointer;
   transition: 0.4s;
 }
 
-.card  .select:hover {
+.add-img-container  .select:hover {
   opacity: 0.6;
 }
 
-.card .container {
+.add-img-container .container {
   width: 100%;
   height: auto;
   display: flex;
@@ -68,7 +68,7 @@
   margin-top: 10px;
 }
 
-.card .container .image {
+.add-img-container .container .image {
   width: 75px;
   margin-right: 5px;
   height: 75px;
@@ -76,13 +76,13 @@
   margin-bottom: 8px;
 }
 
-.card .container .image img {
+.add-img-container .container .image img {
   width: 100%;
   height: 100%;
   border-radius: 5px;
 }
 
-.card .container .image span {
+.add-img-container .container .image span {
   position: absolute;
   top: -2px;
   right: 9px;
@@ -90,13 +90,15 @@
   cursor: pointer;
 }
 
-.card input,
-.card .drag-area .on-drop,
-.card .drag-area.dragover .visible {
+.add-img-container input,
+.add-img-container .drag-area .on-drop,
+.add-img-container .drag-area.dragover .visible {
   display: none;
 }
 
 .delete {
-  z-index: 5;
-  color: #0086fe;
+  z-index: 99;
+  color: black;
+  width: 25px;
+  height: 25px;
 }

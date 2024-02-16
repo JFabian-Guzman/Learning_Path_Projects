@@ -1,7 +1,9 @@
 import '../../assets/style/ImagesInput.css'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef} from 'react'
 import { useUploadHouseImageMutation } from '../../slices/housesApiSlice';
 import { toast } from 'react-toastify';
+import { Container } from 'react-bootstrap';
+import Load from './Load';
 
 const ImagesInput = ({image,setImage}) => {
 
@@ -9,15 +11,14 @@ const ImagesInput = ({image,setImage}) => {
   const [files, setFiles] = useState([]);
   const [shownImage, setShownImage] = useState(image);
   const fileInputRef = useRef();
-  const [uploadHouseImage, {isLoading: loadingUpload}] = useUploadHouseImageMutation();
+  const [uploadHouseImage, {isLoading, error}] = useUploadHouseImageMutation();
 
-  function selectFiles() {
+  const selectFiles = () => {
     fileInputRef.current.click();
   }
   
   const uploadImages = async (e) => {
     e.preventDefault();
-    console.log(files)
     // formData is used to send files to the server
     const formData = new FormData();
     for( let i = 0; i < files.length; i++) {
@@ -91,49 +92,60 @@ const ImagesInput = ({image,setImage}) => {
 
 
   return (
-    <div className="card">
-      <div className="top">
-        <p>Arrastrar y soltar imagen</p>
-      </div>
-      <div className="drag-area"
-        onDragOver={onDragOver}
-        onDragLeave={onDragLeave}
-        onDrop={onDrop}>
-        {
-          drag ?  (
-            <span className="select">
-              Suelte su image aquí
-            </span>
-          ) : (
-            <>
-              Arrastre su image aquí o {' '}
-              <span className="select" role='button' onClick={selectFiles}>
-                Seleccionar
-              </span>
-            </>
-          )
-        }
-        <input type="file" name='file' className="file" 
-        multiple
-        ref={fileInputRef}
-        onChange={updateFiles}/>
-      </div>
-      <div className="container">
-        {
-          shownImage.map((image, index) => (
-            <div key={index} className="image">
-              <img src={image.path} alt={image.name}/>
-              <span className="delete" onClick={()=> deleteimage(index)}>
-              </span>
-            </div>
-          ))
-        }
-      </div>
-      <button type='button' onClick={uploadImages}>
-        Upload
-      </button>
+    <>
 
-    </div>
+    {
+      isLoading ? (
+        <Load />
+      ) : error ? (
+        <h1>{error}</h1>
+      ) : (
+        <div className="add-img-container">
+          <div className="top">
+            <p>Arrastrar y soltar imagen</p>
+          </div>
+          <div className="drag-area"
+            onDragOver={onDragOver}
+            onDragLeave={onDragLeave}
+            onDrop={onDrop}>
+            {
+              drag ?  (
+                <span className="select">
+                  Suelte su image aquí
+                </span>
+              ) : (
+                <>
+                  Arrastre su image aquí o {' '}
+                  <span className="select" role='button' onClick={selectFiles}>
+                    Seleccionar
+                  </span>
+                </>
+              )
+            }
+            <input type="file" name='file' className="file" 
+            multiple
+            ref={fileInputRef}
+            onChange={updateFiles}/>
+          </div>
+          <Container>
+            {
+              shownImage.map((image, index) => (
+                <div key={index} className="image">
+                  <img src={image.path} alt={image.name}/>
+                  <span className="delete" onClick={()=> deleteimage(index)}>
+                  </span>
+                </div>
+              ))
+            }
+          </Container>
+          <button type='button' onClick={uploadImages}>
+            Upload
+          </button>
+
+        </div>
+      )
+    }
+    </>
   )
 }
 

@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { 
   useCreateHouseMutation,
-  useUploadHouseImageMutation,
 } from '../../slices/housesApiSlice';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -16,7 +15,6 @@ import ImagesInput from './ImagesInput';
 const FormSell = () => {
 
   const [createHouse, { error, isLoading }] = useCreateHouseMutation();
-  const [uploadHouseImage, {isLoading: loadingUpload}] = useUploadHouseImageMutation();
   const { userInfo } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
@@ -59,8 +57,6 @@ const FormSell = () => {
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
-    } else {
-      console.log(image); 
     }
   }
   // TODO: Every form input is required
