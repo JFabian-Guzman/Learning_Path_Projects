@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { 
+  useUploadHouseImageMutation,
   useCreateHouseMutation,
 } from '../../slices/housesApiSlice';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +15,8 @@ import ImagesInput from './ImagesInput';
 
 const FormSell = () => {
 
-  const [createHouse, { error, isLoading }] = useCreateHouseMutation();
+  const [createHouse, {error : imageError, isLoading : loadingImage }] = useCreateHouseMutation();
+  const [uploadHouseImage, {isLoading, error}] = useUploadHouseImageMutation();
   const { userInfo } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
@@ -31,32 +33,56 @@ const FormSell = () => {
   const [inSale, setInSale] = useState(false);
   const [forRent, setForRent] = useState(false);
 
+  // Image files
+  const [files, setFiles] = useState([]);
+
+  const uploadImages = async () => {
+    // Send the files to the server
+    try {
+      // formData is used to send files to the server
+      const formData = new FormData();
+      for( let i = 0; i < files.length; i++) {
+        formData.append('images', files[i]);
+      }
+      const res = await uploadHouseImage(formData).unwrap();
+      // Take the path of the images from the response
+      const updatedImages = res.images.map((image) => image.path);
+      return updatedImages;
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  }
+
+
   // Send data
   const handleNewHouse = async ( e ) => {
-
     e.preventDefault();
-    const newHouse ={
-      city,
-      county,
-      description,
-      price,
-      totalArea,
-      houseArea,
-      bathrooms,
-      bedrooms,
-      image,
-      inSale,
-      forRent
-    }
-
-    if (window.confirm('¿Está seguro de que desea listar esta propiedad?')) {
-      try {
+    try {
+      // Wait for the images to be uploaded
+      const res = await uploadImages();
+      // Take the path of the images from the response
+      const imagesUpdated = await res;
+      const newHouse ={
+        city,
+        county,
+        description,
+        price,
+        houseArea,
+        totalArea,
+        bathrooms,
+        bedrooms,
+        image: imagesUpdated,
+        inSale,
+        forRent,
+      }
+      
+        if (window.confirm('¿Está seguro de que desea listar esta propiedad?')) {
         await createHouse(newHouse);
         navigate(`/profile/${userInfo._id}`);
         toast.success('Propiedad listada exitosamente');
-      } catch (err) {
-        toast.error(err?.data?.message || err.error);
       }
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
   }
   // TODO: Every form input is required
@@ -157,7 +183,14 @@ const FormSell = () => {
             </Container>
           </Form.Group>
           {/* Image */}
-          <ImagesInput image={image}  setImage={setImage} />
+          <ImagesInput 
+            image={image}  
+            setImage={setImage}
+            loadingImage={loadingImage}
+            imageError={imageError}
+            files={files}
+            setFiles={setFiles}
+            />
           {/* Rent or Sale or Rent & Sale */}
           <Form.Group className="mb-3 d-flex">
             <Form.Check 

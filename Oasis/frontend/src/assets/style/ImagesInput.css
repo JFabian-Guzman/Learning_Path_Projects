@@ -15,17 +15,6 @@
   color: #0086fe;
 }
 
-.add-img-container button{
-  outline: 0;
-  border: 0;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 400;
-  padding: 8px 13px;
-  width: 100%;
-  background: #0086fe;
-}
 
 .add-img-container .drag-area {
   height: 150px;
@@ -98,7 +87,8 @@
 
 .delete {
   z-index: 99;
-  color: black;
-  width: 25px;
-  height: 25px;
+  color: red;
+  background: blue;
+  width: 50px;
+  height: 50px;
 }

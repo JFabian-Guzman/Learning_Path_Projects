@@ -70,15 +70,11 @@ const HouseScreen = () => {
               </span>
               |
               <span>
-                <span style={{color: '#aaa'}}>Interior:</span> {house.area} m²
+                <span style={{color: '#aaa'}}>Hogar:</span> {house.houseArea} m²
               </span>
               |
               <span>
-                <span style={{color: '#aaa'}}>Propiedad:</span> {house.area} m²
-              </span>
-              |
-              <span>
-                <span style={{color: '#aaa'}}>Hogar:</span> {house.area} m²
+                <span style={{color: '#aaa'}}>Propiedad:</span> {house.totalArea} m²
               </span>
             </p>
           </Container>

@@ -5,7 +5,8 @@ const houses = [
     description:
       'Beautifull house in the heart of the city',
     price: '$50000',
-    area: 200,
+    totalArea: 200,
+    houseArea: 300,
     bathrooms: 2,
     bedrooms: 4,
     image: ['/images/houses/house_3.jpg','/images/gardens/garden_2.jpg', '/images/kitchens/kitchen_1.jpg'
@@ -19,7 +20,8 @@ const houses = [
     description:
       'Beautifull house in the heart of the city',
     price: '$90000',
-    area: 300,
+    totalArea: 200,
+    houseArea: 300,
     bathrooms: 3,
     bedrooms: 4,
     image: ['/images/houses/house_2.jpg','/images/gardens/garden_3.jpg', '/images/kitchens/kitchen_2.jpg'
@@ -33,7 +35,8 @@ const houses = [
     description:
       'Beautifull house in the heart of the city',
     price: '$1500',
-    area: 200,
+    totalArea: 200,
+    houseArea: 300,
     bathrooms: 2,
     bedrooms: 4,
     image: ['/images/houses/house_1.jpg','/images/gardens/garden_1.jpg', '/images/kitchens/kitchen_1.jpg'
@@ -47,7 +50,8 @@ const houses = [
     description:
       'Beautifull house in the heart of the city',
     price: '$3500',
-    area: 400,
+    totalArea: 200,
+    houseArea: 300,
     bathrooms: 4,
     bedrooms: 6,
     image: ['/images/houses/house_2.jpg','/images/gardens/garden_2.jpg', '/images/kitchens/kitchen_3.jpg'
@@ -61,7 +65,8 @@ const houses = [
     description:
       'Beautifull house in the heart of the city',
     price: '$35000',
-    area: 150,
+    totalArea: 200,
+    houseArea: 300,
     bathrooms: 1,
     bedrooms: 2,
     image: ['/images/houses/house_2.jpg','/images/gardens/garden_2.jpg', '/images/kitchens/kitchen_2.jpg'
@@ -75,7 +80,8 @@ const houses = [
     description:
       'Beautifull house in the heart of the city',
     price: '$350000',
-    area: 1200,
+    totalArea: 200,
+    houseArea: 300,
     bathrooms: 4,
     bedrooms: 8,
     image: ['/images/houses/house_3.jpg','/images/gardens/garden_3.jpg', '/images/kitchens/kitchen_3.jpg'
@@ -89,7 +95,8 @@ const houses = [
     description:
       'Contiene varias imagenes',
     price: '$350000',
-    area: 1200,
+    totalArea: 200,
+    houseArea: 300,
     bathrooms: 4,
     bedrooms: 8,
     image: ['/images/houses/house_1.jpg','/images/gardens/garden_1.jpg', '/images/kitchens/kitchen_1.jpg'

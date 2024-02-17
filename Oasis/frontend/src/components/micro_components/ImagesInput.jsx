@@ -1,47 +1,69 @@
 import '../../assets/style/ImagesInput.css'
 import { useState, useRef} from 'react'
-import { useUploadHouseImageMutation } from '../../slices/housesApiSlice';
-import { toast } from 'react-toastify';
 import { Container } from 'react-bootstrap';
 import Load from './Load';
+import CloseButton from 'react-bootstrap/CloseButton';
 
-const ImagesInput = ({image,setImage}) => {
+const ImagesInput = (
+  {
+    image,
+    setImage,
+    loadingImage,
+    imageError,
+    files,
+    setFiles,
+  }) => {
 
   const [drag, setDrag] = useState(false);
-  const [files, setFiles] = useState([]);
   const [shownImage, setShownImage] = useState(image);
   const fileInputRef = useRef();
-  const [uploadHouseImage, {isLoading, error}] = useUploadHouseImageMutation();
 
+
+  // Open the file dialog
   const selectFiles = () => {
     fileInputRef.current.click();
   }
-  
-  const uploadImages = async (e) => {
-    e.preventDefault();
-    // formData is used to send files to the server
-    const formData = new FormData();
-    for( let i = 0; i < files.length; i++) {
-      formData.append('images', files[i]);
+
+  // Update the state with the selected files
+  function updateFiles(e){
+    const actualFiles = e.target.files;
+    if (actualFiles.length > 0) {
+      for (let i = 0; i < actualFiles.length; i++) {
+        // If no file is selected, the function will return
+        if ( actualFiles[i].type.split('/')[0] !== 'image') continue;
+        // Verify that the image is not already in the state
+        if( !files.some((e)=> 
+          e.name === actualFiles[i].name) ) {
+          setFiles(prev => [...prev, actualFiles[i]]);
+        }
+      }
     }
-    try {
-      const res = await uploadHouseImage(formData).unwrap();
-      toast.success('Imagen subida exitosamente');
-      // Update the state with the new images
-      setShownImage(res.images);
-      res.images.forEach((image) => {
-        setImage((prev) => [...prev, image.path]);
-      });
-    } catch (err) {
-      toast.error(err?.data?.message || err.error);
+    updateShownImage( actualFiles );
+  }
+  // Set an imaga with a temporary URL to show it
+  const updateShownImage = ( actualFiles ) => {
+    if (actualFiles.length > 0) {
+      for (let i = 0; i < actualFiles.length; i++) {
+        // If no file is selected, the function will return
+        if ( actualFiles[i].type.split('/')[0] !== 'image') continue;
+        // Verify that the image is not already in the state
+        if( !image.some((e)=> 
+          e.name === actualFiles[i].name) ) {
+          setShownImage(prev => [...prev, {
+            name: actualFiles[i].name,
+            // Set a temporary URL for the image
+            url: URL.createObjectURL(actualFiles[i]),
+          }]);
+        }
+      }
     }
   }
-
+  // Delete the file from the state
   function deleteimage(index) {
     // Delete the image that is not equal to the index
-    setImage((prev) => prev.filter((_,i) => i !== index));
+    setFiles((prev) => prev.filter((_,i) => i !== index));
   }
-
+  // Drag and drop events
   function onDragOver(e) {
     e.preventDefault();
     setDrag(true);
@@ -58,49 +80,21 @@ const ImagesInput = ({image,setImage}) => {
     e.preventDefault();
     setDrag(false);
     const files = e.dataTransfer.files;
-    if (files.length > 0) {
-      for (let i = 0; i < files.length; i++) {
-        // If no file is selected, the function will return
-        if ( files[i].type.split('/')[0] !== 'image') continue;
-        // Verify that the image is not already in the state
-        if( !image.some((e)=> 
-          e.name === files[i].name) ) {
-          setImage(prev => [...prev, {
-            name: files[i].name,
-            // Set a temporary URL for the image
-            url: URL.createObjectURL(files[i]),
-          }]);
-        }
-      }
-    }
+    updateShownImage(files);
   }
 
-  function updateFiles(e){
-    const actualFiles = e.target.files;
-    if (actualFiles.length > 0) {
-      for (let i = 0; i < actualFiles.length; i++) {
-        // If no file is selected, the function will return
-        if ( actualFiles[i].type.split('/')[0] !== 'image') continue;
-        // Verify that the image is not already in the state
-        if( !files.some((e)=> 
-          e.name === actualFiles[i].name) ) {
-          setFiles(prev => [...prev, actualFiles[i]]);
-        }
-      }
-    }
-  }
 
 
   return (
     <>
 
     {
-      isLoading ? (
+      loadingImage ? (
         <Load />
-      ) : error ? (
-        <h1>{error}</h1>
+      ) : imageError ? (
+        <h1>{imageError}</h1>
       ) : (
-        <div className="add-img-container">
+        <div className="add-img-container my-5">
           <div className="top">
             <p>Arrastrar y soltar imagen</p>
           </div>
@@ -131,17 +125,14 @@ const ImagesInput = ({image,setImage}) => {
             {
               shownImage.map((image, index) => (
                 <div key={index} className="image">
-                  <img src={image.path} alt={image.name}/>
+                  <img src={image.url} alt={image.name}/>
+                  <CloseButton />
                   <span className="delete" onClick={()=> deleteimage(index)}>
                   </span>
                 </div>
               ))
             }
           </Container>
-          <button type='button' onClick={uploadImages}>
-            Upload
-          </button>
-
         </div>
       )
     }
