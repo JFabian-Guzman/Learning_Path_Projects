@@ -3,7 +3,8 @@
   box-shadow: 0 0 5px #ffdfdf;
   border-radius: 5px;
   overflow: hidden;
-  width: 50%;
+  width: 75%;
+  background: white;
 }
 
 .add-img-container .top {
@@ -12,15 +13,14 @@
 
 .add-img-container p{
   font-weight: bold;
-  color: #0086fe;
+  color: var(--clr-forestgreen);
 }
 
 
 .add-img-container .drag-area {
   height: 150px;
   border-radius: 5px;
-  border: 2px dashed #0086fe;
-  color: #0086fe;
+  border: 2px dashed var(--clr-forestgreen);
   background: #f4f3f9;
   display: flex;
   justify-content: center;
@@ -35,7 +35,7 @@
 }
 
 .add-img-container .select {
-  color: #5256ad;
+  color: var(--clr-forestgreen);
   margin-left: 5px;
   cursor: pointer;
   transition: 0.4s;
@@ -54,7 +54,6 @@
   flex-wrap: wrap;
   max-height: 200px;
   overflow-y:  auto;
-  margin-top: 10px;
 }
 
 .add-img-container .container .image {
@@ -85,10 +84,14 @@
   display: none;
 }
 
-.delete {
-  z-index: 99;
-  color: red;
-  background: blue;
-  width: 50px;
-  height: 50px;
+.add-img-container .container .image .btn-close {
+  background-color: none;
+  box-shadow: none !important;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 5px;
+  background-color: gray;
 }

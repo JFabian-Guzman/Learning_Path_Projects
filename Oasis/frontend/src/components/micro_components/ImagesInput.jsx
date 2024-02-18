@@ -6,8 +6,6 @@ import CloseButton from 'react-bootstrap/CloseButton';
 
 const ImagesInput = (
   {
-    image,
-    setImage,
     loadingImage,
     imageError,
     files,
@@ -15,7 +13,7 @@ const ImagesInput = (
   }) => {
 
   const [drag, setDrag] = useState(false);
-  const [shownImage, setShownImage] = useState(image);
+  const [shownImage, setShownImage] = useState([]);
   const fileInputRef = useRef();
 
 
@@ -47,7 +45,7 @@ const ImagesInput = (
         // If no file is selected, the function will return
         if ( actualFiles[i].type.split('/')[0] !== 'image') continue;
         // Verify that the image is not already in the state
-        if( !image.some((e)=> 
+        if( !files.some((e)=> 
           e.name === actualFiles[i].name) ) {
           setShownImage(prev => [...prev, {
             name: actualFiles[i].name,
@@ -58,10 +56,11 @@ const ImagesInput = (
       }
     }
   }
-  // Delete the file from the state
+  // Delete the file & the shown image
   function deleteimage(index) {
     // Delete the image that is not equal to the index
     setFiles((prev) => prev.filter((_,i) => i !== index));
+    setShownImage((prev) => prev.filter((_,i) => i !== index));
   }
   // Drag and drop events
   function onDragOver(e) {
@@ -82,8 +81,7 @@ const ImagesInput = (
     const files = e.dataTransfer.files;
     updateShownImage(files);
   }
-
-
+  // End drag and drop events
 
   return (
     <>
@@ -94,7 +92,7 @@ const ImagesInput = (
       ) : imageError ? (
         <h1>{imageError}</h1>
       ) : (
-        <div className="add-img-container my-5">
+        <div className="add-img-container">
           <div className="top">
             <p>Arrastrar y soltar imagen</p>
           </div>
@@ -126,9 +124,7 @@ const ImagesInput = (
               shownImage.map((image, index) => (
                 <div key={index} className="image">
                   <img src={image.url} alt={image.name}/>
-                  <CloseButton />
-                  <span className="delete" onClick={()=> deleteimage(index)}>
-                  </span>
+                  <CloseButton onClick={()=> deleteimage(index)}/>
                 </div>
               ))
             }
