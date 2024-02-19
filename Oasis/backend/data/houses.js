@@ -4,7 +4,7 @@ const houses = [
     county: 'Santa Cruz',
     description:
       'Beautifull house in the heart of the city',
-    price: '$50000',
+    price: 50000,
     totalArea: 200,
     houseArea: 300,
     bathrooms: 2,
@@ -19,7 +19,7 @@ const houses = [
     county: 'Escazu',
     description:
       'Beautifull house in the heart of the city',
-    price: '$90000',
+    price: 90000,
     totalArea: 200,
     houseArea: 300,
     bathrooms: 3,
@@ -34,7 +34,7 @@ const houses = [
     county: 'El Carmen',
     description:
       'Beautifull house in the heart of the city',
-    price: '$1500',
+    price: 1500,
     totalArea: 200,
     houseArea: 300,
     bathrooms: 2,
@@ -49,7 +49,7 @@ const houses = [
     county: 'Barva',
     description:
       'Beautifull house in the heart of the city',
-    price: '$3500',
+    price: 3500,
     totalArea: 200,
     houseArea: 300,
     bathrooms: 4,
@@ -64,7 +64,7 @@ const houses = [
     county: 'San Rafael',
     description:
       'Beautifull house in the heart of the city',
-    price: '$35000',
+    price: 35000,
     totalArea: 200,
     houseArea: 300,
     bathrooms: 1,
@@ -79,7 +79,7 @@ const houses = [
     county: 'Pococi',
     description:
       'Beautifull house in the heart of the city',
-    price: '$350000',
+    price: 350000,
     totalArea: 200,
     houseArea: 300,
     bathrooms: 4,
@@ -94,7 +94,7 @@ const houses = [
     county: 'Pococi',
     description:
       'Contiene varias imagenes',
-    price: '$350000',
+    price: 350000,
     totalArea: 200,
     houseArea: 300,
     bathrooms: 4,

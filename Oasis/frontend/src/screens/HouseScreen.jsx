@@ -27,7 +27,7 @@ const HouseScreen = () => {
     ) : (
       <>
         <Container fluid className='w-100 my-4 ms-5 d-flex flex-column justify-content-center align-items-start'>
-          <h1>{house.price}</h1>
+          <h1>${house.price}</h1>
           <h4 style={{color: '#aaa'}}>{house.city}, {house.county}</h4>
         </Container>
         {/* TODO: To make it responsive, make 2 rows and 1 col instead of 2 cols */}

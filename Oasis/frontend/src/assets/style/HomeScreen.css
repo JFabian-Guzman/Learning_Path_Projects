@@ -50,44 +50,6 @@
   border-bottom: 5px solid var(--clr-lightgreen);
 }
 /* End of Hero Section */
-/* Swiper Section */
-.swiper {
-  width: 90vw;
-  height: 40vh;
-}
-/* End of Swiper Section */
-/* Card Slider */
-.card-sld{
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  border-radius: 5px;
-}
-
-.card-sld img {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  border-radius: 5px;
-  object-fit: cover;
-  filter: brightness(0.7);
-  z-index: -1;
-}
-
-.card-sld .txt-sld {
-  height: 15%;
-  width: 100%;
-  background-color: white;
-  position: relative;
-  top: 8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  font-size: 1.5rem;
-}
-/* End of Card Slider */
 /* Card Services */
 .service-button {
   background: var(--clr-lightgreen);
@@ -106,8 +68,6 @@
 .service-card:hover .service-button {
   background: var(--clr-darkolivegreen);
 }
-
-
 /* End of Card Services */
 /* Card Specs */
 .price {

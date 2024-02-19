@@ -60,7 +60,7 @@ const CardSpecs = forwardRef(({ home }, ref) => {
     <>
         <Card className='specs-container'>
             <div className='price mt-2 ms-2 p-2'>
-              {home.price}
+              ${home.price}
             </div>
             <div className='heart-animation'>
               <Lottie

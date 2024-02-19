@@ -17,10 +17,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#price, #houseArea, #TotalArea, #bedrooms, #bathrooms{
-  -moz-appearance: textfield;
-}
-
 #price::-webkit-inner-spin-button,
 #houseArea::-webkit-inner-spin-button,
 #TotalArea::-webkit-inner-spin-button,

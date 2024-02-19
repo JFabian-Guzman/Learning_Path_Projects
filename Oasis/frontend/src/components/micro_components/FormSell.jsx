@@ -61,13 +61,13 @@ const FormSell = () => {
         const res = await uploadImages();
         // Take the path of the images from the response
         const imagesUpdated = await res;
-        const newHouse ={
+        const newHouse = {
           city,
           county,
           description,
           price,
-          houseArea,
           totalArea,
+          houseArea,
           bathrooms,
           bedrooms,
           image: imagesUpdated,
