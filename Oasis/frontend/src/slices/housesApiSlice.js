@@ -4,9 +4,9 @@ import { apiSlice } from "./apiSlice";
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getHouses: builder.query({
-      query: ({pageNumber}) => ({
+      query: ({keyword, pageNumber}) => ({
         url: HOUSES_URL,
-        params: { pageNumber },
+        params: { keyword, pageNumber },
       }),
       keepUnusedDataFor: 5,
       providesTags: ['Houses'], // Remember add invalidateTags in updateHouse

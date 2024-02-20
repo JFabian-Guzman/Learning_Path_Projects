@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -6,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import PriceInput from './micro_components/PriceInput';
 import FilterSwitch from './micro_components/FilterSwitch';
+import SeachBox from './micro_components/SeachBox';
 
 const FiltersNav = () => {
 
@@ -41,16 +41,7 @@ const FiltersNav = () => {
               <Form.Check className='ms-2 flt-checkbox' id='landCheckBox' type="checkbox" label="Lote" />
             </NavDropdown>
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-              id='search'
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+          <SeachBox type='catalog' placeholder='Provincia o Canton' />
         </Navbar.Collapse>
       </Container>
     </Navbar>

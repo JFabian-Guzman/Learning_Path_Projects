@@ -3,15 +3,10 @@ import { apiSlice } from "./apiSlice";
 
 export const agentsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAgetns: builder.query({
-      query: () => ({
+    getAgents: builder.query({
+      query: ({keyword, pageNumber}) => ({
         url: AGENTS_URL,
-      }),
-      keepUnusedDataFor: 5
-    }),
-    getHouseDetails: builder.query({
-      query: (agentsId) => ({
-        url: `${AGENTS_URL}/${agentsId}`,
+        params: { keyword, pageNumber },
       }),
       keepUnusedDataFor: 5
     }),
@@ -19,4 +14,4 @@ export const agentsApiSlice = apiSlice.injectEndpoints({
 })
 
 
-export const { useGetAgetnsQuery, useGetHouseDetailsQuery } = agentsApiSlice;
+export const { useGetAgentsQuery } = agentsApiSlice;

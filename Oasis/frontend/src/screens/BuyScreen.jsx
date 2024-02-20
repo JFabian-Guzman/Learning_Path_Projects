@@ -10,8 +10,8 @@ import Paginate from "../components/Paginate"
 
 const BuyScreen = () => {
 
-  const { pageNumber } = useParams();
-  const { data, error, isLoading } = useGetHousesQuery({pageNumber});
+  const { pageNumber, keyword } = useParams();
+  const { data, error, isLoading } = useGetHousesQuery({ keyword, pageNumber });
   const animation = useRef(null);
 
   return (
@@ -37,7 +37,8 @@ const BuyScreen = () => {
           </Row>
           <Row>
             <Col className='d-flex justify-content-center align-items-center'>
-              <Paginate pages={data.pages} page={data.page} />
+              <Paginate pages={data.pages} page={data.page} 
+                keyword={keyword ? keyword : ''} />
             </Col>
           </Row>
         </Container>

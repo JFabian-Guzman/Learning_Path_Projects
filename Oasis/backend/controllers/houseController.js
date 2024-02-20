@@ -5,12 +5,37 @@ import House from '../models/houseModel.js';
 // @route   GET /api/houses
 // @access  Public 
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 15;
+  const pageSize = 12;
   // Request the page number in the URL
   const page = Number(req.query.pageNumber) || 1;
-  const count = await House.countDocuments();
+  // Check if there is a keyword in the URL
+  const keyword = req.query.keyword ? {
+    // $or is an array of objects to match the keyword, in this case, city and county
+    $or: [
+      {
+        city: {
+          /* 
+            regex is neceseary to match just a part of the word
+            example: if the word is "house" and the keyword is "ho"
+            the word will be matched
+          */
+          $regex: req.query.keyword,
+          // $options: 'i' is to make the search case insensitive
+          $options: 'i',
+        },
+      },
+      {
+        county: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      }
+    ]
+  } : {};
+  // Count the total number of elements
+  const count = await House.countDocuments({...keyword});
   // Set limit & skip to get the correct elements
-  const houses = await House.find({})
+  const houses = await House.find({...keyword})
     .limit(pageSize)
     .skip(pageSize * (page - 1));
   // Pages = total elements / elements per page

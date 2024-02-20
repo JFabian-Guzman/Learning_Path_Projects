@@ -1,5 +1,5 @@
-import { Container, Button, Form, InputGroup } from 'react-bootstrap'
-
+import { Container } from 'react-bootstrap'
+import SeachBox from './micro_components/SeachBox'
 
 const Hero = () => {
 
@@ -17,16 +17,7 @@ const Hero = () => {
         <p>Explora un mundo de posibilidades inmobiliarias, tu destino para encontrar el hogar de 
           tus sueños. Desde apartamentos urbanos modernos hasta acogedoras casas en suburbios tranquilos, 
           <span> estamos aquí para hacer realidad tus sueños de bienestar y confort.</span></p>
-          <InputGroup className="mb-3">
-        <Form.Control
-          placeholder="Introduzca una provincia o un canton"
-          aria-label="Introduzca una provincia o un canton"
-          aria-describedby="basic-addon2"
-        />
-        <Button variant="outline-light" id="button-addon2">
-          Button
-        </Button>
-      </InputGroup>  
+        <SeachBox type='catalog' placeholder='Buscar propiedades'/>
       </Container>
       <Container fluid className='d-flex justify-content-around align-items-start fs-4 fw-semibold services' style={{height: '15%'}}>
         <p>Conecta con agentes inmobiliarios</p>

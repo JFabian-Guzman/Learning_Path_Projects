@@ -29,8 +29,13 @@ const router = createBrowserRouter(
       <Route path="/register" element={<RegisterScreen />} />
       <Route path="/catalog" element={<BuyScreen />} />
       <Route path="/catalog/page/:pageNumber" element={<BuyScreen />} />
+      <Route path="/catalog/search/:keyword/page/:pageNumber" element={<BuyScreen />} />
+      <Route path="/catalog/search/:keyword" element={<BuyScreen />} />
       <Route path="/catalog/:id" element={<HouseIDScreen />} />
       <Route path="/agents" element={<AgentScreen />} />
+      <Route path="/agents/page/:pageNumber" element={<AgentScreen />} />
+      <Route path="/agents/search/:keyword/page/:pageNumber" element={<AgentScreen />} />
+      <Route path="/agents/search/:keyword" element={<AgentScreen />} />
       <Route path="/profile/:id" element={<ProfileScreen />} />
       <Route path="/sellSteps" element={<SellStepsScreen />} />
 

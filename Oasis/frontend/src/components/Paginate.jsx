@@ -2,7 +2,8 @@ import { Pagination } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import '../assets/style/Paginate.css'
 
-const Paginate = ({ pages, page, isAdmin = false }) => {
+const Paginate = ({ pages, page, isAdmin = false, keyword = '',
+  type = 'catalog'}) => {
   return (
     // If there is more than one page, display the pagination
     pages > 1 && (
@@ -15,7 +16,8 @@ const Paginate = ({ pages, page, isAdmin = false }) => {
             to={
               // If not admin, go to the catalog page, else go to the admin house list
               !isAdmin
-                ? `/catalog/page/${x + 1}`
+                ? keyword ? `/${type}/search/${keyword}/page/${x+1}` 
+                :`/${type}/page/${x + 1}`
                 : `/admin/houseList/${x + 1}`
             }
           >
