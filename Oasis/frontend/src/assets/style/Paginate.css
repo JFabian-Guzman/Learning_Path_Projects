@@ -1,0 +1,12 @@
+
+
+.active>.page-link, .page-link.active {
+  color: var(--clr-darkolivegreen);
+  background: var(--clr-celadon);
+  border: 1px solid var(--clr-darkolivegreen);
+  box-shadow: none;
+}
+
+.page-link {
+  color: var(--clr-darkolivegreen);
+}

@@ -58,7 +58,7 @@ const CardSpecs = forwardRef(({ home }, ref) => {
 
   return (
     <>
-        <Card className='specs-container'>
+        <Card className='specs-container' >
             <div className='price mt-2 ms-2 p-2'>
               ${home.price}
             </div>
@@ -73,7 +73,7 @@ const CardSpecs = forwardRef(({ home }, ref) => {
               />
             </div>
             <Link   to={`/catalog/${home._id}`}>
-              <Card.Img style={{height:'30vh'}} variant="top" src={home.image[0]} />
+              <Card.Img  variant="top" src={home.image[0]}/>
             </Link>
             <Card.Body>
               <Card.Title>

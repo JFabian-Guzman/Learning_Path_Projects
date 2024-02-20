@@ -11,10 +11,10 @@ import { useGetHousesQuery } from "../slices/housesApiSlice";
 import CardSpecs from '../components/micro_components/CardSpecs'
 import Load from './micro_components/Load';
 
-//TODO: It should receive the data from the database
+//TODO: Make a getFavorites query
 const Slider = () => {
 
-  const { data: houses, error, isLoading } = useGetHousesQuery();
+  const { data , error, isLoading } = useGetHousesQuery();
 
   return (
     <>
@@ -40,16 +40,17 @@ const Slider = () => {
             slidesPerView: 3,
           },
         }}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         modules={[Autoplay]}
         loop={true}
         className='h-100'
         style={{ background: '#fff', borderRadius: '10px',}}
       >
-          {houses.map((house) => (
+        {/* TODO: load the last products */}
+          {data.houses.map((house) => (
         <SwiperSlide key={house._id}
         style={{display:'grid', placeItems:'center'}}>
             <CardSpecs home={house}/>

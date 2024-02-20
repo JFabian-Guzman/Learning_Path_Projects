@@ -4,9 +4,17 @@ import House from '../models/houseModel.js';
 // @desc    Fetch all houses
 // @route   GET /api/houses
 // @access  Public 
-const getProducts = asyncHandler(async (req, res) => { 
-  const houses = await House.find({});
-  res.json(houses);
+const getProducts = asyncHandler(async (req, res) => {
+  const pageSize = 15;
+  // Request the page number in the URL
+  const page = Number(req.query.pageNumber) || 1;
+  const count = await House.countDocuments();
+  // Set limit & skip to get the correct elements
+  const houses = await House.find({})
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  // Pages = total elements / elements per page
+  res.json({houses, page, pages: Math.ceil(count / pageSize)});
 });
 
 // @desc    Fetch single house
