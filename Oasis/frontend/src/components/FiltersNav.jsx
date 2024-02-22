@@ -6,9 +6,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import PriceInput from './micro_components/PriceInput';
 import FilterSwitch from './micro_components/FilterSwitch';
 import SeachBox from './micro_components/SeachBox';
+import { useState } from 'react';
 
 // TODO: Make this work
 const FiltersNav = () => {
+
+  const [inSale, setInSale] = useState(false);
+  const [forRent, setForRent] = useState(false);
 
   return (
     <Navbar expand='lg' bg="light" data-bs-theme="light" className='px-5'
@@ -23,8 +27,19 @@ const FiltersNav = () => {
             navbarScroll
           >
             <NavDropdown title="Estado" id="navbarScrollingDropdown">
-              <Form.Check className='ms-2 flt-checkbox' id='saleCheckBox' type="checkbox" label="Venta" />
-              <Form.Check className='ms-2 flt-checkbox' id='rentCheckBox'type="checkbox" label="Renta" />
+              <Form.Check className='ms-2 flt-checkbox'
+              id='sale'
+              type="checkbox"
+              label="Venta"
+              value={inSale}
+              onChange={(e) => setInSale(e.target.checked)}
+              />
+              <Form.Check className='ms-2 flt-checkbox'
+              id='rent'type="checkbox"
+              label="Renta"
+              value={forRent}
+              onChange={(e) => setForRent(e.target.checked)}
+              />
             </NavDropdown>
             <NavDropdown title="Precio" id="navbarScrollingDropdown">
               <PriceInput />

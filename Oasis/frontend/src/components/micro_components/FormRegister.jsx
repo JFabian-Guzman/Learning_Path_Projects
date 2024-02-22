@@ -10,6 +10,7 @@ import { setCredentials } from '../../slices/authSlice';
 import { toast } from 'react-toastify';
 import Load from './Load';
 import Container from 'react-bootstrap/Container';
+import { validateRegister } from '../../utils/FormValidation';
 
 const FormRegister = () => {
 
@@ -18,6 +19,7 @@ const FormRegister = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errors, setErrors] = useState({});
 
   const [register, { isLoading }] = useRegisterMutation();
   const { userInfo } = useSelector((state) => state.auth);
@@ -32,8 +34,7 @@ const FormRegister = () => {
   }, [userInfo, navigate]);
 
 
-  const handleClick = async (e) => {
-    e.preventDefault();
+  const sendRegister = async () => {
     if (password !== confirmPassword) {
       return toast.error('Las contraseñas no coinciden');
     } else {
@@ -46,17 +47,24 @@ const FormRegister = () => {
         toast.error('Error al registrarse');
       }
     }
+  }
 
+  const handleRegister = (e) => {
+    e.preventDefault();
+    setErrors(validateRegister(email, password, name, phone, confirmPassword));
+    if (!errors){
+      sendRegister();
+    }
   }
 
   return (
     <Form className='w-100 h-100 form
-    d-flex flex-column justify-content-center align-items-start'>
-      <Form.Group className="w-100" controlId="formBasicUserName">
+    d-flex flex-column justify-content-center align-items-start'
+    onSubmit={handleRegister}>
+      <Form.Group className="w-100 mb-3" controlId="formBasicUserName">
         <FloatingLabel
           controlId="userNameFloatingInput"
           label="Nombre de usuario"
-          className="mb-3"
         >
           <Form.Control
           type="text"
@@ -64,13 +72,13 @@ const FormRegister = () => {
           value={name}
           onChange={(e) => {setName(e.target.value)}}/>
         </FloatingLabel>
+        {errors.name && <Form.Text className='text-danger'>{errors.name}</Form.Text>}
       </Form.Group>
 
-      <Form.Group className="w-100" controlId="formBasicEmail">
+      <Form.Group className="w-100 mb-3" controlId="formBasicEmail">
         <FloatingLabel
           controlId="emailFloatingInput"
           label="Email"
-          className="mb-3"
         >
           <Form.Control
           type="email"
@@ -79,13 +87,13 @@ const FormRegister = () => {
           value={email}
           onChange={(e) => {setEmail(e.target.value)}}/>
         </FloatingLabel>
+        {errors.email && <Form.Text className='text-danger'>{errors.email}</Form.Text>}
       </Form.Group>
 
-      <Form.Group className="w-100" controlId="phone">
+      <Form.Group className="w-100 mb-3" controlId="phone">
         <FloatingLabel
           controlId="phoneFloatingInput"
           label="Celular"
-          className="mb-3"
         >
           <Form.Control
           type="text"
@@ -93,10 +101,11 @@ const FormRegister = () => {
           value={phone}
           onChange={(e) => {setPhone(e.target.value)}}/>
         </FloatingLabel>
+        {errors.phone && <Form.Text className='text-danger'>{errors.phone}</Form.Text>}
       </Form.Group>
 
-      <Form.Group className="custom-password w-100" controlId="formBasicPassword">
-        <FloatingLabel controlId="floatingPassword" label="Contraseña" className='mb-3'>
+      <Form.Group className="custom-password w-100 mb-3" controlId="formBasicPassword">
+        <FloatingLabel controlId="floatingPassword" label="Contraseña">
           <Form.Control
           type="password"
           placeholder="Contraseña" 
@@ -104,7 +113,10 @@ const FormRegister = () => {
           value={password}
           onChange={(e) => {setPassword(e.target.value)}}/>
         </FloatingLabel>
-        <FloatingLabel controlId="floatingConfirmPassword" label="Confirmar contraseña" className='mb-3'>
+        {errors.password && <Form.Text className='text-danger'>{errors.password}</Form.Text>}
+      </Form.Group>
+      <Form.Group className="custom-password w-100 mb-5" controlId="formBasicPassword">
+        <FloatingLabel controlId="floatingConfirmPassword" label="Confirmar contraseña">
           <Form.Control
           type="password"
           placeholder="Confirmar contraseña"
@@ -112,14 +124,10 @@ const FormRegister = () => {
           value={confirmPassword}
           onChange={(e) => {setConfirmPassword(e.target.value)}}/>
         </FloatingLabel>
-        {/* TODO: When the user make a mistake in the password, the following message will be shown */}
-        {/* <Form.Text id="passwordHelpBlock" muted>
-          Su contraseña debe tener al menos 8 caracteres.<br/>
-        </Form.Text> */}
+        {errors.confirmPassword && <Form.Text className='text-danger'>{errors.confirmPassword}</Form.Text>}
       </Form.Group>
       <Button variant="outline-success mb-2" 
-      className='w-100' type="submit"
-      onClick={handleClick}>
+      className='w-100' type="submit">
         {isLoading ? <Container className='position-relative'><Load /></Container> :
           <span>Registrarse</span>}
       </Button>
