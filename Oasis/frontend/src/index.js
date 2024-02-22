@@ -20,6 +20,7 @@ import PrivateRoute from './components/PrivateRoutes';
 import AgentScreen from './screens/AgentScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import SellStepsScreen from './screens/SellStepsScreen';
+import EditProfileScreen from './screens/EditProfileScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
       <Route path="/agents/search/:keyword/page/:pageNumber" element={<AgentScreen />} />
       <Route path="/agents/search/:keyword" element={<AgentScreen />} />
       <Route path="/profile/:id" element={<ProfileScreen />} />
+      <Route path="/editProfile/:id" element={<EditProfileScreen />} />
       <Route path="/sellSteps" element={<SellStepsScreen />} />
 
 

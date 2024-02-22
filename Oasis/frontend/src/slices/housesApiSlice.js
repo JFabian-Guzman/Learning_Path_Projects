@@ -32,6 +32,12 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getLastHouses: builder.query({
+      query: () => ({
+        url: `${HOUSES_URL}/last`,
+      }),
+      keepUnusedDataFor: 5
+    }),
   }),
 })
 
@@ -41,4 +47,5 @@ export const {
   useGetHouseDetailsQuery,
   useCreateHouseMutation,
   useUploadHouseImageMutation,
+  useGetLastHousesQuery,
 } = productsApiSlice;

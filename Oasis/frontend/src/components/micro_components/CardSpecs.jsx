@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShower } from '@fortawesome/free-solid-svg-icons'
+import { faExpand, faShower } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { faBed } from '@fortawesome/free-solid-svg-icons'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
@@ -58,7 +58,7 @@ const CardSpecs = forwardRef(({ home }, ref) => {
 
   return (
     <>
-        <Card className='specs-container' >
+        <Card className='specs-container h-100 w-100' >
             <div className='price mt-2 ms-2 p-2'>
               ${home.price}
             </div>
@@ -73,7 +73,9 @@ const CardSpecs = forwardRef(({ home }, ref) => {
               />
             </div>
             <Link   to={`/catalog/${home._id}`}>
-              <Card.Img  variant="top" src={home.image[0]}/>
+              <Card.Img variant="top" src={home.image[0]}
+              style={{height: '300px', objectFit: 'cover'}}
+              />
             </Link>
             <Card.Body>
               <Card.Title>
@@ -83,12 +85,12 @@ const CardSpecs = forwardRef(({ home }, ref) => {
               <Card.Text>
                 <FontAwesomeIcon className='ms-1 me-2'icon={faShower} /> {home.bathrooms} 
                 <FontAwesomeIcon className='ms-4 me-2' icon={faBed} /> {home.bedrooms}
-                <FontAwesomeIcon className='ms-4 me-2' icon={faHouse} /> {home.area} m²
+                <FontAwesomeIcon className='ms-4 me-2' icon={faHouse} /> {home.houseArea} m²
+                <FontAwesomeIcon className='ms-4 me-2' icon={faExpand} /> {home.totalArea} m²
               </Card.Text>
             </Card.Body>
         </Card>
     </>
-    
   )
 });
 

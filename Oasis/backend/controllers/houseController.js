@@ -56,6 +56,14 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get last posted houses
+// @route   GET /api/houses/last
+// @access  Public
+const getLastHouses = asyncHandler(async (req, res) => {
+  const house = await House.find({}).sort({createdAt: -1}).limit(7);
+  res.status(200).json(house);
+});
+
 // @desc    Create a houses
 // @route   POST /api/houses
 // @access  Private 
@@ -86,4 +94,4 @@ const createHouse = asyncHandler(async (req, res) => {
   res.status(201).json(createdHouse);
 });
 
-export { getProducts, getProductById, createHouse };
+export { getProducts, getProductById, createHouse, getLastHouses };

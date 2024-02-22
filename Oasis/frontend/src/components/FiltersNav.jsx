@@ -7,6 +7,7 @@ import PriceInput from './micro_components/PriceInput';
 import FilterSwitch from './micro_components/FilterSwitch';
 import SeachBox from './micro_components/SeachBox';
 
+// TODO: Make this work
 const FiltersNav = () => {
 
   return (
@@ -14,7 +15,7 @@ const FiltersNav = () => {
     style={{
     borderBottom:'1px solid black'
     }}>
-      <Container fluid>
+      <Container>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -33,12 +34,6 @@ const FiltersNav = () => {
             </NavDropdown>
             <NavDropdown title="Baños" id="navbarScrollingDropdown">
               < FilterSwitch />
-            </NavDropdown>
-            <NavDropdown title="Propiedad" id="navbarScrollingDropdown">
-              <Form.Check className='ms-2 flt-checkbox' id='houseCheckBox' type="checkbox" label="Casa" />
-              <Form.Check className='ms-2 flt-checkbox' id='apartmentCheckBox' type="checkbox" label="Apartamento" />
-              <Form.Check className='ms-2 flt-checkbox' id='condoCheckBox' type="checkbox" label="Condominio" />
-              <Form.Check className='ms-2 flt-checkbox' id='landCheckBox' type="checkbox" label="Lote" />
             </NavDropdown>
           </Nav>
           <SeachBox type='catalog' placeholder='Provincia o Canton' />

@@ -12,8 +12,9 @@ const HomeScreen = () => {
     <>
       <Hero />
       {/*New Section*/}
-      < Container fluid className='p-5 position-relative'
-      style={{ background: '#fff', height:'500px',
+      <h2 className='ms-4'>Ultimas Publicaciones</h2>
+      < Container fluid
+      style={{ background: '#fff',
       boxShadow:'rgba(0, 0, 0, 0.1) 0px 0px 5px 1px'}}>
         <Slider/>
       </Container>

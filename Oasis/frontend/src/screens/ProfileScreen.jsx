@@ -1,16 +1,25 @@
 import { Image, Container, Row, Col } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import CardSpecs from '../components/micro_components/CardSpecs'
+import Button from 'react-bootstrap/Button'
+import { LinkContainer } from 'react-router-bootstrap'
+import { useGetUserDetailsQuery } from '../slices/usersApiSlice'
+import { useParams } from 'react-router-dom'
+import Load from '../components/micro_components/Load'
 
 const ProfileScreen = () => {
-
+  const { id: userId } = useParams();
   const myFavorites = useSelector((state) => state.myFavorites);
   const {favorites} = myFavorites;
-
-  const { userInfo } = useSelector((state) => state.auth);
+  const { data: user, error, isLoading } = useGetUserDetailsQuery(userId);
 
   return (
     <>
+    {isLoading ? (
+      <Load />
+    ) : error ? (
+      <p>{error?.data?.message || error.error}</p>
+    ) : (
     <Container fluid className="d-flex flex-column p-0">
       <Container fluid className=" w-100 d-flex flex-column justify-content-between py-5 align-items-center"
         style={{
@@ -19,19 +28,24 @@ const ProfileScreen = () => {
         <Row className="w-100 d-flex justify-content-center">
           <Row>
             <Col className='text-center'>
-            <Image src={userInfo.image} roundedCircle  style={{ maxWidth: '10vw'}}/>
+            <Image src={user.image} roundedCircle  style={{ maxWidth: '10vw'}}/>
             </Col>
           </Row>
           <Row className='mt-5'>
             <Col></Col>
             <Col className='text-center'>
-              <span>Nombre: <br /> {userInfo.name} </span>
+              <span>Nombre: <br /> {user.name} </span>
             </Col>
             <Col className='text-center'>
-              <span>Celular: <br /> {userInfo.phone} </span>
+              <span>Celular: <br /> {user.phone} </span>
             </Col>
             <Col className='text-center'>
-              <span>Correo: <br /> {userInfo.email} </span>
+              <span>Correo: <br /> {user.email} </span>
+            </Col>
+            <Col className='text-center'>
+              <LinkContainer to={`/editProfile/${user._id}`} >
+                <Button variant='outline-dark' className='mt-3'>Editar</Button>
+              </LinkContainer>
             </Col>
             <Col></Col>
           </Row>
@@ -51,6 +65,7 @@ const ProfileScreen = () => {
         </Row>
       </Container>
     </Container>
+    )}
   </>
   )
 }

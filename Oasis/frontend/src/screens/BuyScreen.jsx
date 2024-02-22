@@ -28,9 +28,9 @@ const BuyScreen = () => {
         className='d-flex flex-column align-items-between
         justify-content-center px-5 last-listed-container'>
 
-          <Row xs={1} md={2} lg={2} xl={3} className="g-5 mb-5 d-flex justify-content-center align-items-center">
+          <Row>
             {data.houses.map((house) => (
-              <Col key={house._id} className='d-flex justify-content-center align-items-center'>
+              <Col key={house._id} xs={12} md={6} lg={4} className="mb-5">
                 <CardSpecs home={house} ref={animation}/>
               </Col>
             ))}
