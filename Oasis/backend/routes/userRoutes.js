@@ -4,7 +4,6 @@ import {
   registerUser,
   logoutUser,
   getUserProfile,
-  updateUserProfile,
   getUsers,
   deleteUser,
   getUsersByID,
@@ -20,7 +19,6 @@ router.post('/logout', logoutUser);
 router.post('/auth', authUser);
 router.route('/profile')
   .get(protect, getUserProfile)
-  .put(protect, updateUserProfile);
 router.route('/:id')
   .delete(protect, admin, deleteUser)
   .get(protect, getUsersByID)
